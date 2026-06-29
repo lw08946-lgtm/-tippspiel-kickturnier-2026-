@@ -29,15 +29,23 @@ function login() {
 }
 
 window.onload = function(){
- function wetteAuswaehlen(text, quote){
+
+    const name = localStorage.getItem("spieler");
+
+    if(name){
+        spielerAnzeige.innerHTML = "👤 " + name;
+        coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+    }
+
+}
+
+function wetteAuswaehlen(text, quote){
 
     document.getElementById("wettscheinText").innerHTML = text;
 
     document.getElementById("gesamtQuote").innerHTML = quote.toFixed(2);
 
-}   
-
-    const name = localStorage.getItem("spieler");
+}
 
     if(name){
         spielerAnzeige.innerHTML = "👤 " + name;
