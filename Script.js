@@ -65,5 +65,10 @@ function wetteAuswaehlen(text, quote){
     document.getElementById("gesamtQuote").innerHTML = gesamtquote.toFixed(2);
 
 }
+const einsatz = Number(document.getElementById("einsatz").value) || 0;
 
+const gewinn = einsatz * gesamtquote;
+
+document.getElementById("moeglicherGewinn").innerHTML =
+    gewinn.toFixed(2) + " Coins";
     
