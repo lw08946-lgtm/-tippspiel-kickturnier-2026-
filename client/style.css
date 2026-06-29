@@ -1,1 +1,51 @@
+body{
+    margin:0;
+    background:#121212;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
+header{
+    background:#1f1f1f;
+    padding:20px;
+    text-align:center;
+    border-bottom:3px solid #00c853;
+}
+
+h1{
+    color:#00e676;
+}
+
+.container{
+    width:95%;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:#242424;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#00c853;
+    color:white;
+    font-size:18px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#333;
+    color:white;
+}
