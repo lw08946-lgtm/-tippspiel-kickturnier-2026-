@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tippspiel Kickturnier 2026</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>⚽ Tippspiel Kickturnier 2026</h1>
+
+    <div class="spielerbox">
+
+        <span id="spieler">Nicht angemeldet</span>
+
+        <span id="coins">💰 1000 Coins</span>
+
+    </div>
+
+</header>
+
+<nav>
+
+    <button>🏠 Start</button>
+    <button>⚽ Spiele</button>
+    <button>🎟️ Wettschein</button>
+    <button>⚙️ Admin</button>
+
+</nav>
+
+<main>
+
+<section class="karte">
+
+<h2>Anmelden</h2>
+
+<input
+id="name"
+type="text"
+placeholder="Dein Name">
+
+<button id="loginButton">
+Anmelden
+</button>
+
+</section>
+
+<section class="karte">
+
+<h2>Spiele</h2>
+
+<div id="spieleListe"></div>
+
+</section>
+
+<section class="karte">
+
+<h2>🎟️ Wettschein</h2>
+
+<div id="wettscheinListe">
+    <p>Noch keine Wetten ausgewählt.</p>
+</div>
+
+<p>Gesamtquote: <strong id="gesamtQuote">1.00</strong></p>
+<p>Möglicher Gewinn: <strong id="moeglicherGewinn">0.00 Coins</strong></p>
+<input
+    id="einsatz"
+    type="number"
+    placeholder="Einsatz"
+    oninput="berechneGewinn()">
+
+<button>Wette platzieren</button>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
