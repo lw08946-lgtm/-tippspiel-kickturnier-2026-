@@ -60,3 +60,15 @@ nav{
 nav button{
     min-width:120px;
 }
+.spiel{
+    margin-top:15px;
+}
+
+.spiel h3{
+    margin-bottom:8px;
+}
+
+hr{
+    margin:20px 0;
+    border:1px solid #333;
+}
