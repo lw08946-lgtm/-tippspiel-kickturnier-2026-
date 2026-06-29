@@ -103,3 +103,20 @@ button:active{
 .quoten button{
     flex:1;
 }
+.quoten button{
+
+    background:#2f9e44;
+
+}
+
+.quoten button:hover{
+
+    background:#37b24d;
+
+}
+
+.karte{
+
+    box-shadow:0 0 15px rgba(0,0,0,.35);
+
+}
