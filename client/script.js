@@ -1,24 +1,40 @@
+// ===============================
 // Tippspiel Kickturnier 2026
+// Version 1.0
+// ===============================
 
-console.log("Tippspiel Kickturnier 2026 gestartet.");
+let coins = 1000;
+
+const spielerAnzeige = document.getElementById("spieler");
+const coinsAnzeige = document.getElementById("coins");
+const loginButton = document.getElementById("loginButton");
+
+loginButton.addEventListener("click", login);
 
 function login() {
-    const name = document.getElementById("name").value.trim();
-    const code = document.getElementById("code").value.trim();
 
-    if (name === "" || code === "") {
-        alert("Bitte Name und Zugangscode eingeben.");
+    const name = document.getElementById("name").value.trim();
+
+    if(name === ""){
+        alert("Bitte gib deinen Namen ein.");
         return;
     }
 
-    // Daten für später speichern
-    localStorage.setItem("spielerName", name);
-    localStorage.setItem("zugangscode", code);
+    spielerAnzeige.innerHTML = "👤 " + name;
+    coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
 
-    // Begrüßung
+    localStorage.setItem("spieler", name);
+
     alert("Willkommen " + name + "!");
+}
 
-    // Anzeige auf der Startseite ändern
-    document.querySelector(".card h2").innerText = "Willkommen";
-    document.querySelector(".card p").innerText = "Du bist erfolgreich angemeldet.";
+window.onload = function(){
+
+    const name = localStorage.getItem("spieler");
+
+    if(name){
+        spielerAnzeige.innerHTML = "👤 " + name;
+        coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+    }
+
 }
