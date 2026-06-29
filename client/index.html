@@ -1,89 +1,108 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tippspiel Kickturnier 2026</title>
-<link rel="stylesheet" href="style.css">
 
-
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <nav>
 
-<button>🏠 Start</button>
+    <h1>⚽ Tippspiel Kickturnier 2026</h1>
 
-<button>⚽ Spiele</button>
+    <div class="spielerbox">
 
-<button>🎟️ Wettschein</button>
+        <span id="spieler">Nicht angemeldet</span>
 
-<button>🏆 Rangliste</button>
+        <span id="coins">💰 1000 Coins</span>
 
-<button>⚙️ Admin</button>
-
-</nav>
-
-<h1>⚽ Tippspiel Kickturnier 2026</h1>
+    </div>
 
 </header>
 
-<div class="container">
+<nav>
 
-<div class="card">
+    <button>🏠 Start</button>
+    <button>⚽ Spiele</button>
+    <button>🎟️ Wettschein</button>
+    <button>⚙️ Admin</button>
 
-<h2>Login</h2>
+</nav>
 
-<input id="name" placeholder="Name">
+<main>
 
-<input id="code" placeholder="Zugangscode">
+<section class="karte">
 
-<br><br>
+<h2>Anmelden</h2>
 
-<button onclick="login()">Anmelden</button>
+<input
+id="name"
+type="text"
+placeholder="Dein Name">
 
-</div>
+<button id="loginButton">
+Anmelden
+</button>
 
-<div class="card">
+</section>
 
-<h2>Heutige Spiele</h2>
+<section class="karte">
 
-<div class="spiel">
-
-<h3>Team 1 🆚 Team 2</h3>
-
-<p>10:00 Uhr</p>
-
-<button>Jetzt tippen</button>
-
-</div>
-
-<hr>
+<h2>Spiele</h2>
 
 <div class="spiel">
 
-<h3>Team 3 🆚 Team 4</h3>
+<div>
 
-<p>10:20 Uhr</p>
+<strong>Team 1</strong>
 
-<button>Jetzt tippen</button>
+</div>
+
+<div class="quoten">
+
+<button>2.10</button>
+
+<button>3.50</button>
+
+<button>2.80</button>
+
+</div>
+
+<div>
+
+<strong>Team 2</strong>
 
 </div>
 
 </div>
 
-<div class="card">
+</section>
 
-<h2>Rangliste</h2>
+<section class="karte">
 
-<p>🥇 Noch keine Teilnehmer</p>
+<h2>🎟️ Wettschein</h2>
 
-</div>
+<p>Noch keine Wetten ausgewählt.</p>
 
-</div>
+<p>Quote: <strong>0.00</strong></p>
+
+<input
+type="number"
+placeholder="Einsatz">
+
+<button>Wette platzieren</button>
+
+</section>
+
+</main>
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
