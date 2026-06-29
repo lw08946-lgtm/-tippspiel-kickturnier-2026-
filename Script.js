@@ -5,6 +5,7 @@
 alert("script.js wurde geladen");
 
 let coins = 1000;
+let wettschein = [];
 
 const spielerAnzeige = document.getElementById("spieler");
 const coinsAnzeige = document.getElementById("coins");
