@@ -59,7 +59,7 @@ window.onload = function () {
         spielerAnzeige.innerHTML = "👤 " + name;
         coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
     }
-
+spieleAnzeigen();
 };
 
 function wetteAuswaehlen(spielId, text, quote) {
@@ -104,5 +104,39 @@ function berechneGewinn() {
 
     document.getElementById("moeglicherGewinn").innerHTML =
         gewinn.toFixed(2) + " Coins";
+
+}
+
+function spieleAnzeigen(){
+
+    const spieleListe = document.getElementById("spieleListe");
+
+    spieleListe.innerHTML = "";
+
+    for(let spiel of spiele){
+
+        spieleListe.innerHTML += `
+
+        <div class="spiel">
+
+            <strong>${spiel.heim}</strong>
+
+            <div class="quoten">
+
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} Sieg', ${spiel.q1})">${spiel.q1.toFixed(2)}</button>
+
+                <button onclick="wetteAuswaehlen(${spiel.id}, 'Unentschieden', ${spiel.qx})">${spiel.qx.toFixed(2)}</button>
+
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.gast} Sieg', ${spiel.q2})">${spiel.q2.toFixed(2)}</button>
+
+            </div>
+
+            <strong>${spiel.gast}</strong>
+
+        </div>
+
+        `;
+
+    }
 
 }
