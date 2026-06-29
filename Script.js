@@ -2,7 +2,6 @@
 // Tippspiel Kickturnier 2026
 // Version 1.0
 // ===============================
-alert("script.js wurde geladen");
 
 let coins = 1000;
 let wettschein = [];
@@ -17,7 +16,7 @@ function login() {
 
     const name = document.getElementById("name").value.trim();
 
-    if(name === ""){
+    if (name === "") {
         alert("Bitte gib deinen Namen ein.");
         return;
     }
@@ -28,22 +27,23 @@ function login() {
     localStorage.setItem("spieler", name);
 
     alert("Willkommen " + name + "!");
+
 }
 
-window.onload = function(){
+window.onload = function () {
 
     const name = localStorage.getItem("spieler");
 
-    if(name){
+    if (name) {
         spielerAnzeige.innerHTML = "👤 " + name;
         coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
     }
 
-}
+};
 
-function wetteAuswaehlen(spielId, text, quote){
+function wetteAuswaehlen(spielId, text, quote) {
 
-    // Vorhandenen Tipp für dieses Spiel entfernen
+    // Alten Tipp für dieses Spiel entfernen
     wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
 
     // Neuen Tipp hinzufügen
@@ -53,32 +53,23 @@ function wetteAuswaehlen(spielId, text, quote){
         quote: quote
     });
 
-    
-
-    berechneGewinn();
-
-}
-
     const liste = document.getElementById("wettscheinListe");
-
     liste.innerHTML = "";
 
-    for(let tipp of wettschein){
-
+    for (let tipp of wettschein) {
         liste.innerHTML +=
-        "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
-
+            "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
     }
 
     berechneGewinn();
 
 }
 
-function berechneGewinn(){
+function berechneGewinn() {
 
     let gesamtquote = 1;
 
-    for(let tipp of wettschein){
+    for (let tipp of wettschein) {
         gesamtquote *= tipp.quote;
     }
 
