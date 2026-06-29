@@ -47,9 +47,4 @@ function wetteAuswaehlen(text, quote){
 
 }
 
-    if(name){
-        spielerAnzeige.innerHTML = "👤 " + name;
-        coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
-    }
-
-}
+    
