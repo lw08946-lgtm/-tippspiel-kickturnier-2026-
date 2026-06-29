@@ -53,16 +53,7 @@ function wetteAuswaehlen(spielId, text, quote){
         quote: quote
     });
 
-    const liste = document.getElementById("wettscheinListe");
-
-    liste.innerHTML = "";
-
-    for(let tipp of wettschein){
-
-        liste.innerHTML +=
-        "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
-
-    }
+    
 
     berechneGewinn();
 
