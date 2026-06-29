@@ -41,12 +41,32 @@ window.onload = function(){
 
 }
 
-function wetteAuswaehlen(text, quote){
+function wetteAuswaehlen(spielId, text, quote){
 
+    // Vorhandenen Tipp für dieses Spiel entfernen
+    wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
+
+    // Neuen Tipp hinzufügen
     wettschein.push({
+        spielId: spielId,
         text: text,
         quote: quote
     });
+
+    const liste = document.getElementById("wettscheinListe");
+
+    liste.innerHTML = "";
+
+    for(let tipp of wettschein){
+
+        liste.innerHTML +=
+        "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
+
+    }
+
+    berechneGewinn();
+
+}
 
     const liste = document.getElementById("wettscheinListe");
 
