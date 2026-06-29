@@ -65,11 +65,11 @@ Anmelden
 
 <div class="quoten">
 
-<button>2.10</button>
+<button onclick="wetteAuswaehlen('Team 1 Sieg',2.10)">2.10</button>
 
-<button>3.50</button>
+<button onclick="wetteAuswaehlen('Unentschieden',3.50)">3.50</button>
 
-<button>2.80</button>
+<button onclick="wetteAuswaehlen('Team 2 Sieg',2.80)">2.80</button>
 
 </div>
 
@@ -87,9 +87,9 @@ Anmelden
 
 <h2>🎟️ Wettschein</h2>
 
-<p>Noch keine Wetten ausgewählt.</p>
+<p id="wettscheinText">Noch keine Wetten ausgewählt.</p>
 
-<p>Quote: <strong>0.00</strong></p>
+<p>Quote: <strong id="gesamtQuote">0.00</strong></p>
 
 <input
 type="number"
