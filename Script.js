@@ -47,6 +47,24 @@ function wetteAuswaehlen(text, quote){
         text: text,
         quote: quote
     });
+    function berechneGewinn() {
+
+    let gesamtquote = 1;
+
+    for (let tipp of wettschein) {
+        gesamtquote *= tipp.quote;
+    }
+
+    berechneGewinn();
+
+    const einsatz = Number(document.getElementById("einsatz").value) || 0;
+
+    const gewinn = einsatz * gesamtquote;
+
+    document.getElementById("moeglicherGewinn").innerHTML =
+        gewinn.toFixed(2) + " Coins";
+
+}
 
     const liste = document.getElementById("wettscheinListe");
 
