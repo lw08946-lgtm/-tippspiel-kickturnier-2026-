@@ -47,39 +47,39 @@ function wetteAuswaehlen(text, quote){
         text: text,
         quote: quote
     });
-    function berechneGewinn() {
-
-    let gesamtquote = 1;
-
-    for (let tipp of wettschein) {
-        gesamtquote *= tipp.quote;
-    }
-
-    berechneGewinn();
-
-    const einsatz = Number(document.getElementById("einsatz").value) || 0;
-
-    const gewinn = einsatz * gesamtquote;
-
-    document.getElementById("moeglicherGewinn").innerHTML =
-        gewinn.toFixed(2) + " Coins";
-
-}
 
     const liste = document.getElementById("wettscheinListe");
 
     liste.innerHTML = "";
 
-    let gesamtquote = 1;
-
     for(let tipp of wettschein){
 
-        liste.innerHTML += "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
-
-        gesamtquote *= tipp.quote;
+        liste.innerHTML +=
+        "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
 
     }
 
-    document.getElementById("gesamtQuote").innerHTML = gesamtquote.toFixed(2);
+    berechneGewinn();
+
+}
+
+function berechneGewinn(){
+
+    let gesamtquote = 1;
+
+    for(let tipp of wettschein){
+        gesamtquote *= tipp.quote;
+    }
+
+    document.getElementById("gesamtQuote").innerHTML =
+        gesamtquote.toFixed(2);
+
+    const einsatz =
+        Number(document.getElementById("einsatz").value) || 0;
+
+    const gewinn = einsatz * gesamtquote;
+
+    document.getElementById("moeglicherGewinn").innerHTML =
+        gewinn.toFixed(2) + " Coins";
 
 }
