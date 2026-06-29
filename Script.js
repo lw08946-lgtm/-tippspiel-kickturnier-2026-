@@ -5,6 +5,27 @@
 
 let coins = 1000;
 let wettschein = [];
+const spiele = [
+
+{
+    id: 1,
+    heim: "Team 1",
+    gast: "Team 2",
+    q1: 2.10,
+    qx: 3.50,
+    q2: 2.80
+},
+
+{
+    id: 2,
+    heim: "Team 3",
+    gast: "Team 4",
+    q1: 1.95,
+    qx: 3.80,
+    q2: 3.20
+}
+
+];
 
 const spielerAnzeige = document.getElementById("spieler");
 const coinsAnzeige = document.getElementById("coins");
