@@ -43,9 +43,26 @@ window.onload = function(){
 
 function wetteAuswaehlen(text, quote){
 
-    document.getElementById("wettscheinText").innerHTML = text;
+    wettschein.push({
+        text: text,
+        quote: quote
+    });
 
-    document.getElementById("gesamtQuote").innerHTML = quote.toFixed(2);
+    const liste = document.getElementById("wettscheinListe");
+
+    liste.innerHTML = "";
+
+    let gesamtquote = 1;
+
+    for(let tipp of wettschein){
+
+        liste.innerHTML += "<p>✔️ " + tipp.text + " (" + tipp.quote.toFixed(2) + ")</p>";
+
+        gesamtquote *= tipp.quote;
+
+    }
+
+    document.getElementById("gesamtQuote").innerHTML = gesamtquote.toFixed(2);
 
 }
 
