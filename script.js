@@ -1,3 +1,16 @@
+// Firebase initialisieren
+const firebaseConfig = {
+    apiKey: "AIzaSyCH70NtQj4o_3cAZPFG-v_Kqs6SDqWBjBc",
+    authDomain: "tippspiel-kickturnier.firebaseapp.com",
+    projectId: "tippspiel-kickturnier",
+    storageBucket: "tippspiel-kickturnier.firebasestorage.app",
+    messagingSenderId: "1006490909522",
+    appId: "1:1006490909522:web:8bd455874f2c852c72d88b"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
 // ===============================
 // Tippspiel Kickturnier 2026
 // Version 1.0
