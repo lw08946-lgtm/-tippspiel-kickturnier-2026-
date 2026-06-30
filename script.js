@@ -711,11 +711,7 @@ function pruefeOffeneWetten() {
         for (let tipp of wette.tipps) {
 
             alert(
-                "Tipp: " + tipp.text +
-                "\nGespeichertes Ergebnis im Tipp: " + tipp.ergebnis +
-                "\nErgebnis im System: " + ergebnisse[tipp.spielId]
-            );
-
+ 
             if (!(tipp.spielId in ergebnisse)) {
                 alleErgebnisseVorhanden = false;
                 continue;
