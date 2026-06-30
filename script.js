@@ -401,7 +401,6 @@ function wettePlatzieren() {
     }
 
     offeneWetten.push({
-        offeneWetten.push({
 
     id: Date.now(),
 
