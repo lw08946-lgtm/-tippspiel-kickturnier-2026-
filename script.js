@@ -218,6 +218,17 @@ function zeigeAdmin() {
     document.getElementById("adminSeite").style.display = "block";
 document.getElementById("meineWettenSeite").style.display = "none";
 }
+function zeigeNeuesSpiel() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("meineWettenSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "none";
+
+    document.getElementById("neuesSpielSeite").style.display = "block";
+
+}
 function teamsSpeichern() {
 
     const teams = [];
@@ -390,5 +401,54 @@ liste.innerHTML += `
 `;
 
     }
+
+}
+function spielHinzufuegen() {
+
+    const phase = document.getElementById("phase").value;
+
+    const heim = document.getElementById("heimTeam").value;
+
+    const gast = document.getElementById("gastTeam").value;
+
+    const q1 = Number(document.getElementById("quote1").value);
+
+    const qx = Number(document.getElementById("quoteX").value);
+
+    const q2 = Number(document.getElementById("quote2").value);
+
+    if (heim === "" || gast === "") {
+
+        alert("Bitte beide Teams eingeben.");
+
+        return;
+
+    }
+
+    spiele.push({
+
+        id: spiele.length + 1,
+
+        phase: phase,
+
+        heim: heim,
+
+        gast: gast,
+
+        q1: q1,
+
+        qx: qx,
+
+        q2: q2,
+
+        ergebnis: null
+
+    });
+
+    spieleAnzeigen();
+
+    alert("✅ Neues Spiel hinzugefügt!");
+
+    zeigeSpiele();
 
 }
