@@ -706,6 +706,7 @@ function pruefeOffeneWetten() {
         let gewonnen = true;
         let alleErgebnisseVorhanden = true;
 
+
         for (let tipp of wette.tipps) {
 
             alert(
