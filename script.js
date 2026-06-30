@@ -5,6 +5,7 @@
 
 let coins = 1000;
 let wettschein = [];
+let aktiveButtons = {};
 
 const spiele = [
 
