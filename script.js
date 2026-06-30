@@ -291,16 +291,15 @@ function zeigeErgebnisse() {
 
     ladeErgebnisse();
     }
-    function ergebnisSpeichern(spielId, ergebnis) {
+function ergebnisSpeichern(spielId, ergebnis) {
 
     ergebnisse[spielId] = ergebnis;
 
+    pruefeOffeneWetten();
+
     ladeErgebnisse();
-        
 
     alert("✅ Ergebnis gespeichert!");
-
-
 
 }
 function teamsSpeichern() {
@@ -696,7 +695,55 @@ function ladeErgebnisse() {
     }
 
 }
+function pruefeOffeneWetten() {
 
+    for (let wette of offeneWetten) {
+
+        let gewonnen = true;
+
+        for (let tipp of wette.tipps) {
+
+            if (tipp.spielId in ergebnisse) {
+
+                let richtigesErgebnis = ergebnisse[tipp.spielId];
+
+                let tippErgebnis = "";
+
+                if (tipp.text.includes("Heim")) {
+                    tippErgebnis = "1";
+                } else if (tipp.text.includes("Unentschieden")) {
+                    tippErgebnis = "X";
+                } else {
+                    tippErgebnis = "2";
+                }
+
+                if (tippErgebnis !== richtigesErgebnis) {
+                    gewonnen = false;
+                }
+
+            } else {
+
+                gewonnen = false;
+
+            }
+
+        }
+
+        if (gewonnen) {
+
+            wette.status = "🟢 Gewonnen";
+
+        } else {
+
+            wette.status = "🟡 Offen";
+
+        }
+
+    }
+
+    aktualisiereOffeneWetten();
+
+}
 
 
 
