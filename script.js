@@ -7,6 +7,7 @@ let coins = 1000;
 let wettschein = [];
 let aktiveButtons = {};
 let offeneWetten = [];
+let offeneWetten = [];
 
 const spiele = [
 
@@ -288,3 +289,61 @@ function teamsSpeichern() {
     alert("Alle Teams gespeichert!");
 
 }
+function wettePlatzieren() {
+
+    if (wettschein.length === 0) {
+        alert("Bitte wähle zuerst mindestens eine Wette aus.");
+        return;
+    }
+
+    const einsatz =
+        Number(document.getElementById("einsatz").value);
+
+    if (!einsatz || einsatz <= 0) {
+        alert("Bitte gib einen Einsatz ein.");
+        return;
+    }
+
+    if (einsatz > coins) {
+        alert("Du hast nicht genügend Coins.");
+        return;
+    }
+
+    let gesamtquote = 1;
+
+    for (let tipp of wettschein) {
+        gesamtquote *= tipp.quote;
+    }
+
+    offeneWetten.push({
+
+        tipps: [...wettschein],
+        einsatz: einsatz,
+        quote: gesamtquote,
+        moeglicherGewinn: einsatz * gesamtquote,
+        status: "🟡 Offen"
+
+    });
+
+    coins -= einsatz;
+
+    coinsAnzeige.innerHTML =
+        "💰 " + coins + " Coins";
+
+    aktualisiereOffeneWetten();
+
+    wettschein = [];
+
+    document.getElementById("wettscheinListe").innerHTML =
+        "<p>Noch keine Wetten ausgewählt.</p>";
+
+    document.getElementById("einsatz").value = "";
+
+    document.getElementById("gesamtQuote").innerHTML = "1.00";
+    document.getElementById("moeglicherGewinn").innerHTML = "0.00 Coins";
+
+    alert("✅ Wette erfolgreich platziert!");
+
+}
+
+
