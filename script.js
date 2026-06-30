@@ -73,7 +73,7 @@ zeigeStart();
     
 };
 
-function wetteAuswaehlen(spielId, spiel, text, quote) {
+function wetteAuswaehlen(spielId, spiel, text, quote, button) {
 
     wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
 
