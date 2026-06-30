@@ -638,6 +638,8 @@ function sonderwetteAuswaehlen(titel, antwort, quote) {
 }
 function ladeErgebnisse() {
 
+    alert("ladeErgebnisse läuft");
+
     const liste = document.getElementById("ergebnisseListe");
 
     liste.innerHTML = "";
