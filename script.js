@@ -1004,4 +1004,9 @@ function ladeSpielerliste() {
     }
 
 }
-console.log("Firebase verbunden:", window.db);
+
+if (window.db) {
+    alert("✅ Firebase verbunden");
+} else {
+    alert("❌ Firebase nicht verbunden");
+}
