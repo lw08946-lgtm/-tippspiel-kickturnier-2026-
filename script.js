@@ -758,6 +758,6 @@ if (gewonnen && alleErgebnisseVorhanden) {
     aktualisiereOffeneWetten();
 
 }
-
+}
 
 
