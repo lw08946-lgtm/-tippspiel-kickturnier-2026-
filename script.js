@@ -785,11 +785,28 @@ function pruefeOffeneWetten() {
                 gewonnen = false;
             }
 
-        } // <-- beendet die Tipp-Schleife
+        }
 
         if (gewonnen && alleErgebnisseVorhanden) {
 
             wette.status = "🟢 Gewonnen";
+
+            if (!ausgezahlteWetten.includes(wette.id)) {
+
+                coins += wette.moeglicherGewinn;
+
+                coinsAnzeige.innerHTML =
+                    "💰 " + coins + " Coins";
+
+                ausgezahlteWetten.push(wette.id);
+
+                speichernSpieler();
+
+                alert("🎉 Du hast " +
+                      wette.moeglicherGewinn.toFixed(2) +
+                      " Coins gewonnen!");
+
+            }
 
         } else if (!gewonnen && alleErgebnisseVorhanden) {
 
