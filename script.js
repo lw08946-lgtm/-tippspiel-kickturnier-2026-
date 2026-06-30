@@ -707,10 +707,8 @@ function pruefeOffeneWetten() {
         let gewonnen = true;
         let alleErgebnisseVorhanden = true;
 
-
         for (let tipp of wette.tipps) {
 
- 
             if (!(tipp.spielId in ergebnisse)) {
                 alleErgebnisseVorhanden = false;
                 continue;
@@ -720,18 +718,24 @@ function pruefeOffeneWetten() {
                 gewonnen = false;
             }
 
-        
+        } // <-- beendet die Tipp-Schleife
 
         if (gewonnen && alleErgebnisseVorhanden) {
+
             wette.status = "🟢 Gewonnen";
+
         } else if (!gewonnen && alleErgebnisseVorhanden) {
+
             wette.status = "🔴 Verloren";
+
         } else {
+
             wette.status = "🟡 Offen";
+
         }
 
     }
 
     aktualisiereOffeneWetten();
+
 }
- 
