@@ -7,7 +7,6 @@ let coins = 1000;
 let wettschein = [];
 let aktiveButtons = {};
 let offeneWetten = [];
-let offeneWetten = [];
 
 const spiele = [
 
