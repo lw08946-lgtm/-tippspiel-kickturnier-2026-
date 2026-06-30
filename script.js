@@ -1019,3 +1019,19 @@ function ladeSpielerliste() {
 }
 
 alert("Firebase geladen!");
+db.collection("test").doc("verbindung").set({
+
+    status: "Verbunden",
+    zeit: new Date().toLocaleString()
+
+})
+.then(() => {
+
+    alert("✅ Test erfolgreich in Firestore gespeichert!");
+
+})
+.catch((error) => {
+
+    alert("❌ Fehler: " + error);
+
+});
