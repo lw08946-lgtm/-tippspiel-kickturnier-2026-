@@ -191,6 +191,9 @@ function zeigeAdmin() {
         return;
     }
 
-    alert("Adminbereich folgt im nächsten Schritt.");
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "block";
 
 }
