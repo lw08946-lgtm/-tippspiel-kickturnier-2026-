@@ -73,13 +73,13 @@ window.onload = function () {
 
 function wetteAuswaehlen(spielId, text, quote) {
 
-    wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
-
-    wettschein.push({
-        spielId: spielId,
-        text: text,
-        quote: quote
-    });
+    wettschein = wettschein.filter(tipp => tipp.spielId !== 
+        wettschein.push({
+    spielId: spielId,
+    spiel: spiel,
+    text: text,
+    quote: quote
+});
 
     const liste = document.getElementById("wettscheinListe");
     liste.innerHTML = "";
