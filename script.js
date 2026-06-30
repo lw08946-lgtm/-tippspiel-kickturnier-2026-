@@ -728,18 +728,30 @@ function pruefeOffeneWetten() {
             }
 
         }
+let alleErgebnisseVorhanden = true;
 
-        if (gewonnen) {
+for (let tipp of wette.tipps) {
 
-            wette.status = "🟢 Gewonnen";
-
-        } else {
-
-            wette.status = "🟡 Offen";
-
-        }
-
+    if (!(tipp.spielId in ergebnisse)) {
+        alleErgebnisseVorhanden = false;
     }
+
+}
+
+if (gewonnen && alleErgebnisseVorhanden) {
+
+    wette.status = "🟢 Gewonnen";
+
+} else if (!gewonnen && alleErgebnisseVorhanden) {
+
+    wette.status = "🔴 Verloren";
+
+} else {
+
+    wette.status = "🟡 Offen";
+
+}
+
 
     aktualisiereOffeneWetten();
 
