@@ -710,7 +710,6 @@ function pruefeOffeneWetten() {
 
         for (let tipp of wette.tipps) {
 
-            alert(
  
             if (!(tipp.spielId in ergebnisse)) {
                 alleErgebnisseVorhanden = false;
