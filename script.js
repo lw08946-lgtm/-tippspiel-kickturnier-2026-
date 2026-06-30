@@ -8,6 +8,7 @@ let wettschein = [];
 let aktiveButtons = {};
 let offeneWetten = [];
 let sonderwetten = [];
+let ergebnisse = {};
 
 let spiele = [
 
