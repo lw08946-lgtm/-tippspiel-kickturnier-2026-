@@ -721,7 +721,7 @@ function pruefeOffeneWetten() {
                 gewonnen = false;
             }
 
-        }
+        
 
         if (gewonnen && alleErgebnisseVorhanden) {
             wette.status = "🟢 Gewonnen";
