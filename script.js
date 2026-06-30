@@ -354,24 +354,40 @@ function wettePlatzieren() {
 
     for (let wette of offeneWetten) {
 
-        liste.innerHTML += `
+let tippsHTML = "";
 
-        <div class="spiel">
+for (let tipp of wette.tipps) {
 
-            <h3>${wette.status}</h3>
+    tippsHTML += `
+        <p>
+            <strong>${tipp.spiel}</strong><br>
+            ✔️ ${tipp.text}
+            (${tipp.quote.toFixed(2)})
+        </p>
+    `;
 
-            <p>Einsatz:
-            ${wette.einsatz} Coins</p>
+}
 
-            <p>Quote:
-            ${wette.quote.toFixed(2)}</p>
+liste.innerHTML += `
 
-            <p>Möglicher Gewinn:
-            ${wette.moeglicherGewinn.toFixed(2)} Coins</p>
+<div class="spiel">
 
-        </div>
+    <h3>${wette.status}</h3>
 
-        `;
+    ${tippsHTML}
+
+    <hr>
+
+    <p><strong>Einsatz:</strong> ${wette.einsatz} Coins</p>
+
+    <p><strong>Quote:</strong> ${wette.quote.toFixed(2)}</p>
+
+    <p><strong>Möglicher Gewinn:</strong>
+    ${wette.moeglicherGewinn.toFixed(2)} Coins</p>
+
+</div>
+
+`;
 
     }
 
