@@ -1018,8 +1018,4 @@ function ladeSpielerliste() {
 
 }
 
-if (window.db) {
-    alert("✅ Firebase verbunden");
-} else {
-    alert("❌ Firebase nicht verbunden");
-}
+alert("Firebase geladen!");
