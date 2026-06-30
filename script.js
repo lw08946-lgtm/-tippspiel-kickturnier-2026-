@@ -10,6 +10,7 @@ let offeneWetten = [];
 let sonderwetten = [];
 let ergebnisse = {};
 let aktuellerSpieler = "";
+let ausgezahlteWetten = [];
 
 let spiele = [
 
