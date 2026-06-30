@@ -5,7 +5,6 @@
 
 let coins = 1000;
 let wettschein = [];
-const spiele = [
 
 const spiele = [
 
@@ -32,8 +31,6 @@ const spiele = [
     {id:16, heim:"Team 10", gast:"Team 12", q1:2.15, qx:3.45, q2:2.75},
     {id:17, heim:"Team 9", gast:"Team 12", q1:1.95, qx:3.60, q2:3.10},
     {id:18, heim:"Team 10", gast:"Team 11", q1:2.30, qx:3.25, q2:2.60}
-
-];
 
 ];
 
@@ -69,15 +66,15 @@ window.onload = function () {
         spielerAnzeige.innerHTML = "👤 " + name;
         coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
     }
-spieleAnzeigen();
+
+    spieleAnzeigen();
+
 };
 
 function wetteAuswaehlen(spielId, text, quote) {
 
-    // Alten Tipp für dieses Spiel entfernen
     wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
 
-    // Neuen Tipp hinzufügen
     wettschein.push({
         spielId: spielId,
         text: text,
@@ -117,34 +114,30 @@ function berechneGewinn() {
 
 }
 
-function spieleAnzeigen(){
+function spieleAnzeigen() {
 
     const spieleListe = document.getElementById("spieleListe");
 
     spieleListe.innerHTML = "";
 
-    for(let spiel of spiele){
+    for (let spiel of spiele) {
 
         spieleListe.innerHTML += `
+            <div class="spiel">
 
-        <div class="spiel">
+                <strong>${spiel.heim}</strong>
 
-            <strong>${spiel.heim}</strong>
+                <div class="quoten">
+                    <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} Sieg', ${spiel.q1})">${spiel.q1.toFixed(2)}</button>
 
-            <div class="quoten">
+                    <button onclick="wetteAuswaehlen(${spiel.id}, 'Unentschieden', ${spiel.qx})">${spiel.qx.toFixed(2)}</button>
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} Sieg', ${spiel.q1})">${spiel.q1.toFixed(2)}</button>
+                    <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.gast} Sieg', ${spiel.q2})">${spiel.q2.toFixed(2)}</button>
+                </div>
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, 'Unentschieden', ${spiel.qx})">${spiel.qx.toFixed(2)}</button>
-
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.gast} Sieg', ${spiel.q2})">${spiel.q2.toFixed(2)}</button>
+                <strong>${spiel.gast}</strong>
 
             </div>
-
-            <strong>${spiel.gast}</strong>
-
-        </div>
-
         `;
 
     }
