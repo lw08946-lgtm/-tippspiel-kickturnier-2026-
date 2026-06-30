@@ -8,7 +8,7 @@ let wettschein = [];
 let aktiveButtons = {};
 let offeneWetten = [];
 
-const spiele = [
+let spiele = [
 
     // Gruppe A
     {id:1, heim:"Team 1", gast:"Team 2", q1:2.10, qx:3.50, q2:2.80},
