@@ -197,3 +197,16 @@ function zeigeAdmin() {
     document.getElementById("adminSeite").style.display = "block";
 
 }
+function teamsSpeichern() {
+
+    spiele[0].heim = document.getElementById("team1").value || "Team 1";
+    spiele[0].gast = document.getElementById("team2").value || "Team 2";
+
+    spiele[1].heim = document.getElementById("team3").value || "Team 3";
+    spiele[1].gast = document.getElementById("team4").value || "Team 4";
+
+    spieleAnzeigen();
+
+    alert("Teams gespeichert!");
+
+}
