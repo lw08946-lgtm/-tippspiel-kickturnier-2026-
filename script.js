@@ -698,7 +698,8 @@ function ladeErgebnisse() {
 
         `;
 
-    }function pruefeOffeneWetten() {
+    }
+    function pruefeOffeneWetten() {
 
     for (let wette of offeneWetten) {
 
