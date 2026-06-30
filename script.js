@@ -164,7 +164,7 @@ function spieleAnzeigen() {
 
     }
 
-}
+
 
 }
 function zeigeStart() {
