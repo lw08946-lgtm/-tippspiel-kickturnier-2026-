@@ -71,7 +71,7 @@ window.onload = function () {
 
 };
 
-function wetteAuswaehlen(spielId, text, quote) {
+function wetteAuswaehlen(spielId, spiel, text, quote) {
 
     wettschein = wettschein.filter(tipp => tipp.spielId !== 
         wettschein.push({
