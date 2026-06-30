@@ -7,6 +7,7 @@ let coins = 1000;
 let wettschein = [];
 let aktiveButtons = {};
 let offeneWetten = [];
+let sonderwetten = [];
 
 let spiele = [
 
@@ -491,3 +492,73 @@ function spielHinzufuegen() {
     zeigeSpiele();
 
 }
+function sonderwetteHinzufuegen() {
+
+    const titel = document.getElementById("sonderTitel").value;
+
+    if (titel === "") {
+        alert("Bitte einen Titel eingeben.");
+        return;
+    }
+
+    const antworten = [];
+
+    for (let i = 1; i <= 4; i++) {
+
+        const text = document.getElementById("antwort" + i).value;
+        const quote = Number(document.getElementById("quoteAntwort" + i).value);
+
+        if (text !== "" && quote > 0) {
+
+            antworten.push({
+                text: text,
+                quote: quote
+            });
+
+        }
+
+    }
+
+    if (antworten.length < 2) {
+
+        alert("Mindestens zwei Antworten eingeben.");
+
+        return;
+
+    }
+
+    sonderwetten.push({
+
+        titel: titel,
+        antworten: antworten
+
+    });
+
+    aktualisiereSonderwetten();
+
+    alert("✅ Sonderwette gespeichert!");
+
+}
+function aktualisiereSonderwetten() {
+
+    const liste = document.getElementById("sonderwettenListe");
+
+    liste.innerHTML = "";
+
+    for (let wette of sonderwetten) {
+
+        liste.innerHTML += `
+
+        <div class="spiel">
+
+            <h3>${wette.titel}</h3>
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
