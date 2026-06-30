@@ -486,7 +486,9 @@ function teamsSpeichern() {
 
     spieleAnzeigen();
 
-    alert("Alle Teams gespeichert!");
+speichereTeamsOnline();
+
+alert("Alle Teams gespeichert!");
 
 }
 function wettePlatzieren() {
@@ -1017,21 +1019,22 @@ function ladeSpielerliste() {
     }
 
 }
+async function speichereTeamsOnline() {
 
-alert("Firebase geladen!");
-db.collection("test").doc("verbindung").set({
+    try {
 
-    status: "Verbunden",
-    zeit: new Date().toLocaleString()
+        await db.collection("turnier")
+            .doc("teams")
+            .set({
+                spiele: spiele
+            });
 
-})
-.then(() => {
+        console.log("Teams online gespeichert");
 
-    alert("✅ Test erfolgreich in Firestore gespeichert!");
+    } catch (error) {
 
-})
-.catch((error) => {
+        console.error(error);
 
-    alert("❌ Fehler: " + error);
+    }
 
-});
+}
