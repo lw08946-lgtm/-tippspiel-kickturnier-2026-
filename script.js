@@ -92,16 +92,38 @@ function login() {
 
 window.onload = function () {
 
-    const name = localStorage.getItem("spieler");
+    spieleAnzeigen();
+    zeigeStart();
 
-    if (name) {
-        spielerAnzeige.innerHTML = "👤 " + name;
-        coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+    const letzterSpieler = localStorage.getItem("letzterSpieler");
+
+    if (letzterSpieler) {
+
+        document.getElementById("name").value = letzterSpieler;
+
+        aktuellerSpieler = letzterSpieler;
+
+        const daten = localStorage.getItem("spieler_" + letzterSpieler);
+
+        if (daten) {
+
+            const spieler = JSON.parse(daten);
+
+            coins = spieler.coins;
+            offeneWetten = spieler.offeneWetten;
+            sonderwetten = spieler.sonderwetten;
+            ergebnisse = spieler.ergebnisse;
+
+            spielerAnzeige.innerHTML = "👤 " + letzterSpieler;
+            coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+
+            aktualisiereOffeneWetten();
+            aktualisiereSonderwetten();
+
+        }
+
     }
 
-    spieleAnzeigen();
-zeigeStart();
-    
 };
 
 function wetteAuswaehlen(spielId, spiel, text, ergebnis, quote, button) {
