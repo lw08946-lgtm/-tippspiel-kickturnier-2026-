@@ -547,17 +547,70 @@ function aktualisiereSonderwetten() {
 
     for (let wette of sonderwetten) {
 
+        let antwortenHTML = "";
+
+        for (let antwort of wette.antworten) {
+
+            antwortenHTML += `
+
+            <button onclick="sonderwetteAuswaehlen('${wette.titel}', '${antwort.text}', ${antwort.quote})">
+
+                ${antwort.text}
+                (${antwort.quote.toFixed(2)})
+
+            </button>
+
+            <br><br>
+
+            `;
+
+        }
+
         liste.innerHTML += `
 
         <div class="spiel">
 
             <h3>${wette.titel}</h3>
 
+            ${antwortenHTML}
+
         </div>
 
         `;
 
     }
+
+}
+function sonderwetteAuswaehlen(titel, antwort, quote) {
+
+    wettschein.push({
+
+        spielId: "sonder_" + titel,
+
+        spiel: titel,
+
+        text: antwort,
+
+        quote: quote,
+
+        typ: "sonder"
+
+    });
+
+    const liste = document.getElementById("wettscheinListe");
+
+    liste.innerHTML = "";
+
+    for (let tipp of wettschein) {
+
+        liste.innerHTML +=
+        "<p><strong>" + tipp.spiel + "</strong><br>" +
+        "✔️ " + tipp.text +
+        " (" + tipp.quote.toFixed(2) + ")</p>";
+
+    }
+
+    berechneGewinn();
 
 }
 
