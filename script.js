@@ -2,7 +2,7 @@
 // Tippspiel Kickturnier 2026
 // Version 1.0
 // ===============================
-
+alert("JavaScript läuft");
 let coins = 1000;
 let wettschein = [];
 
