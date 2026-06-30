@@ -142,15 +142,15 @@ function spieleAnzeigen() {
 
             <div class="quoten">
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.heim} Sieg', ${spiel.q1})">
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.heim} Sieg', ${spiel.q1}, this)">
                     ${spiel.q1.toFixed(2)}
                 </button>
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', 'Unentschieden', ${spiel.qx})">
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', 'Unentschieden', ${spiel.qx}, this)">
                     ${spiel.qx.toFixed(2)}
                 </button>
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.gast} Sieg', ${spiel.q2})">
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.gast} Sieg', ${spiel.q2}, this)">
                     ${spiel.q2.toFixed(2)}
                 </button>
 
@@ -163,6 +163,8 @@ function spieleAnzeigen() {
         `;
 
     }
+
+}
 
 }
 function zeigeStart() {
