@@ -27,16 +27,19 @@
 
 <nav>
 
-    <button>🏠 Start</button>
-    <button>⚽ Spiele</button>
-    <button>🎟️ Wettschein</button>
-    <button>⚙️ Admin</button>
+    <button onclick="zeigeStart()">🏠 Start</button>
+
+<button onclick="zeigeSpiele()">⚽ Spiele</button>
+
+<button onclick="zeigeWettschein()">🎟️ Wettschein</button>
+
+<button onclick="zeigeAdmin()">⚙️ Admin</button>
 
 </nav>
 
 <main>
 
-<section class="karte">
+<section class="karte" id="startSeite">
 
 <h2>Anmelden</h2>
 
@@ -51,7 +54,7 @@ Anmelden
 
 </section>
 
-<section class="karte">
+<section class="karte" id="spieleSeite">
 
 <h2>Spiele</h2>
 
@@ -59,7 +62,7 @@ Anmelden
 
 </section>
 
-<section class="karte">
+<section class="karte" id="wettscheinSeite">
 
 <h2>🎟️ Wettschein</h2>
 
