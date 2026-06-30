@@ -171,6 +171,22 @@ function spieleAnzeigen() {
     }
 
 }
+function zeigeQuoten() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("meineWettenSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "none";
+    document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
+    document.getElementById("neueSonderwetteSeite").style.display = "none";
+    document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "block";
+
+    ladeQuoten();
+
+}
 function zeigeStart() {
 
     document.getElementById("startSeite").style.display = "block";
