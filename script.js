@@ -290,6 +290,15 @@ function zeigeErgebnisse() {
     document.getElementById("ergebnisseSeite").style.display = "block";
 
     ladeErgebnisse();
+    function ergebnisSpeichern(spielId, ergebnis) {
+
+    ergebnisse[spielId] = ergebnis;
+
+    ladeErgebnisse();
+
+    alert("✅ Ergebnis gespeichert!");
+
+}
 
 }
 function teamsSpeichern() {
@@ -638,13 +647,13 @@ function sonderwetteAuswaehlen(titel, antwort, quote) {
 }
 function ladeErgebnisse() {
 
-    alert("ladeErgebnisse läuft");
-
     const liste = document.getElementById("ergebnisseListe");
 
     liste.innerHTML = "";
 
     for (let spiel of spiele) {
+
+        const gespeichert = ergebnisse[spiel.id];
 
         liste.innerHTML += `
 
@@ -654,19 +663,25 @@ function ladeErgebnisse() {
 
             <br><br>
 
-            <button onclick="ergebnisSpeichern(${spiel.id}, '1')">
+            <button
+            onclick="ergebnisSpeichern(${spiel.id}, '1')"
+            style="${gespeichert === "1" ? "background:#2563eb;" : ""}">
                 🏠 Heimsieg
             </button>
 
             <br><br>
 
-            <button onclick="ergebnisSpeichern(${spiel.id}, 'X')">
+            <button
+            onclick="ergebnisSpeichern(${spiel.id}, 'X')"
+            style="${gespeichert === "X" ? "background:#2563eb;" : ""}">
                 🤝 Unentschieden
             </button>
 
             <br><br>
 
-            <button onclick="ergebnisSpeichern(${spiel.id}, '2')">
+            <button
+            onclick="ergebnisSpeichern(${spiel.id}, '2')"
+            style="${gespeichert === "2" ? "background:#2563eb;" : ""}">
                 ✈️ Auswärtssieg
             </button>
 
@@ -677,13 +692,6 @@ function ladeErgebnisse() {
         `;
 
     }
-
-}
-function ergebnisSpeichern(spielId, ergebnis) {
-
-    ergebnisse[spielId] = ergebnis;
-
-    alert("✅ Ergebnis gespeichert!");
 
 }
 
