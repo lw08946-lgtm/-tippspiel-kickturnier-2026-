@@ -346,4 +346,34 @@ function wettePlatzieren() {
 
 }
 
+   function aktualisiereOffeneWetten() {
 
+    const liste =
+        document.getElementById("offeneWettenListe");
+
+    liste.innerHTML = "";
+
+    for (let wette of offeneWetten) {
+
+        liste.innerHTML += `
+
+        <div class="spiel">
+
+            <h3>${wette.status}</h3>
+
+            <p>Einsatz:
+            ${wette.einsatz} Coins</p>
+
+            <p>Quote:
+            ${wette.quote.toFixed(2)}</p>
+
+            <p>Möglicher Gewinn:
+            ${wette.moeglicherGewinn.toFixed(2)} Coins</p>
+
+        </div>
+
+        `;
+
+    }
+
+}
