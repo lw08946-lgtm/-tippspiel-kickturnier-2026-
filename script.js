@@ -698,70 +698,44 @@ function ladeErgebnisse() {
 
         `;
 
-    }
-
-}
-function pruefeOffeneWetten() {
+    }function pruefeOffeneWetten() {
 
     for (let wette of offeneWetten) {
 
         let gewonnen = true;
+        let alleErgebnisseVorhanden = true;
 
         for (let tipp of wette.tipps) {
 
-            if (tipp.spielId in ergebnisse) {
+            if (!(tipp.spielId in ergebnisse)) {
+                alleErgebnisseVorhanden = false;
+                continue;
+            }
 
-                let richtigesErgebnis = ergebnisse[tipp.spielId];
-
-                let tippErgebnis = "";
-
-                if (tipp.text.includes("Heim")) {
-                    tippErgebnis = "1";
-                } else if (tipp.text.includes("Unentschieden")) {
-                    tippErgebnis = "X";
-                } else {
-                    tippErgebnis = "2";
-                }
-
-                if (tippErgebnis !== richtigesErgebnis) {
-                    gewonnen = false;
-                }
-
-            } else {
-
+            if (tipp.ergebnis !== ergebnisse[tipp.spielId]) {
                 gewonnen = false;
-
             }
 
         }
-let alleErgebnisseVorhanden = true;
 
-for (let tipp of wette.tipps) {
+        if (gewonnen && alleErgebnisseVorhanden) {
 
-    if (!(tipp.spielId in ergebnisse)) {
-        alleErgebnisseVorhanden = false;
+            wette.status = "🟢 Gewonnen";
+
+        } else if (!gewonnen && alleErgebnisseVorhanden) {
+
+            wette.status = "🔴 Verloren";
+
+        } else {
+
+            wette.status = "🟡 Offen";
+
+        }
+
     }
-
-}
-
-if (gewonnen && alleErgebnisseVorhanden) {
-
-    wette.status = "🟢 Gewonnen";
-
-} else if (!gewonnen && alleErgebnisseVorhanden) {
-
-    wette.status = "🔴 Verloren";
-
-} else {
-
-    wette.status = "🟡 Offen";
-
-}
-
 
     aktualisiereOffeneWetten();
 
 }
+
 }
-
-
