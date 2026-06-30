@@ -141,6 +141,12 @@ Wette platzieren
 📈 Quoten bearbeiten
 </button>
 
+    <button onclick="zeigeCoinsAufladen()">
+    💰 Coins aufladen
+</button>
+
+<br><br>
+    
 <br><br>
 
 <button onclick="zeigeErgebnisse()">
@@ -242,6 +248,28 @@ Spiel hinzufügen
     <h2>📈 Quoten bearbeiten</h2>
 
     <div id="quotenListe"></div>
+
+</section> 
+   <section class="karte" id="coinsSeite" style="display:none;">
+
+    <h2>💰 Coins aufladen</h2>
+
+    <input
+        id="coinsSpieler"
+        placeholder="Spielername">
+
+    <br><br>
+
+    <input
+        id="euroBetrag"
+        type="number"
+        placeholder="Euro">
+
+    <br><br>
+
+    <button onclick="coinsAufladen()">
+        💰 Coins gutschreiben
+    </button>
 
 </section> 
 
