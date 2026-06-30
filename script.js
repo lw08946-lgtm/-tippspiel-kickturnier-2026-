@@ -811,4 +811,16 @@ function ladeQuoten() {
     }
 
 }
+function quoteSpeichern(spielId) {
 
+    const spiel = spiele.find(s => s.id === spielId);
+
+    spiel.q1 = Number(document.getElementById("q1_" + spielId).value);
+    spiel.qx = Number(document.getElementById("qx_" + spielId).value);
+    spiel.q2 = Number(document.getElementById("q2_" + spielId).value);
+
+    spieleAnzeigen();
+
+    alert("✅ Quoten gespeichert!");
+
+}
