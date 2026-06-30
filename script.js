@@ -739,4 +739,4 @@ function pruefeOffeneWetten() {
 
     aktualisiereOffeneWetten();
 }
- }
+ 
