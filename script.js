@@ -128,11 +128,11 @@ function spieleAnzeigen() {
                 <strong>${spiel.heim}</strong>
 
                 <div class="quoten">
-                    <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} Sieg', ${spiel.q1})">${spiel.q1.toFixed(2)}</button>
+<button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.heim} Sieg', ${spiel.q1})">${spiel.q1.toFixed(2)}</button>
 
-                    <button onclick="wetteAuswaehlen(${spiel.id}, 'Unentschieden', ${spiel.qx})">${spiel.qx.toFixed(2)}</button>
+<button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', 'Unentschieden', ${spiel.qx})">${spiel.qx.toFixed(2)}</button>
 
-                    <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.gast} Sieg', ${spiel.q2})">${spiel.q2.toFixed(2)}</button>
+<button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.gast} Sieg', ${spiel.q2})">${spiel.q2.toFixed(2)}</button>
                 </div>
 
                 <strong>${spiel.gast}</strong>
