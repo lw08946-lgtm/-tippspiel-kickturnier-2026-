@@ -293,13 +293,7 @@ function zeigeErgebnisse() {
     }
 function ergebnisSpeichern(spielId, ergebnis) {
 
-    ergebnisse[spielId] = ergebnis;
-
-    // pruefeOffeneWetten();
-
-    ladeErgebnisse();
-
-    alert("✅ Ergebnis gespeichert!");
+    alert("Funktion funktioniert!");
 
 }
 function teamsSpeichern() {
