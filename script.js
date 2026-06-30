@@ -738,5 +738,3 @@ function ladeErgebnisse() {
     aktualisiereOffeneWetten();
 
 }
-
-}
