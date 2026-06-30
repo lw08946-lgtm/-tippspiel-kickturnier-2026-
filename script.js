@@ -199,14 +199,71 @@ function zeigeAdmin() {
 }
 function teamsSpeichern() {
 
-    spiele[0].heim = document.getElementById("team1").value || "Team 1";
-    spiele[0].gast = document.getElementById("team2").value || "Team 2";
+    const teams = [];
 
-    spiele[1].heim = document.getElementById("team3").value || "Team 3";
-    spiele[1].gast = document.getElementById("team4").value || "Team 4";
+    for (let i = 1; i <= 12; i++) {
+        teams[i] = document.getElementById("team" + i).value || ("Team " + i);
+    }
+
+    // Gruppe A
+    spiele[0].heim = teams[1];
+    spiele[0].gast = teams[2];
+
+    spiele[1].heim = teams[3];
+    spiele[1].gast = teams[4];
+
+    spiele[2].heim = teams[1];
+    spiele[2].gast = teams[3];
+
+    spiele[3].heim = teams[2];
+    spiele[3].gast = teams[4];
+
+    spiele[4].heim = teams[1];
+    spiele[4].gast = teams[4];
+
+    spiele[5].heim = teams[2];
+    spiele[5].gast = teams[3];
+
+    // Gruppe B
+    spiele[6].heim = teams[5];
+    spiele[6].gast = teams[6];
+
+    spiele[7].heim = teams[7];
+    spiele[7].gast = teams[8];
+
+    spiele[8].heim = teams[5];
+    spiele[8].gast = teams[7];
+
+    spiele[9].heim = teams[6];
+    spiele[9].gast = teams[8];
+
+    spiele[10].heim = teams[5];
+    spiele[10].gast = teams[8];
+
+    spiele[11].heim = teams[6];
+    spiele[11].gast = teams[7];
+
+    // Gruppe C
+    spiele[12].heim = teams[9];
+    spiele[12].gast = teams[10];
+
+    spiele[13].heim = teams[11];
+    spiele[13].gast = teams[12];
+
+    spiele[14].heim = teams[9];
+    spiele[14].gast = teams[11];
+
+    spiele[15].heim = teams[10];
+    spiele[15].gast = teams[12];
+
+    spiele[16].heim = teams[9];
+    spiele[16].gast = teams[12];
+
+    spiele[17].heim = teams[10];
+    spiele[17].gast = teams[11];
 
     spieleAnzeigen();
 
-    alert("Teams gespeichert!");
+    alert("Alle Teams gespeichert!");
 
 }
