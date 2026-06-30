@@ -9,6 +9,7 @@ let aktiveButtons = {};
 let offeneWetten = [];
 let sonderwetten = [];
 let ergebnisse = {};
+let aktuellerSpieler = "";
 
 let spiele = [
 
@@ -53,10 +54,37 @@ function login() {
         return;
     }
 
+    aktuellerSpieler = name;
+
+    const daten = localStorage.getItem("spieler_" + name);
+
+    if (daten) {
+
+        const spieler = JSON.parse(daten);
+
+        coins = spieler.coins;
+        offeneWetten = spieler.offeneWetten;
+        sonderwetten = spieler.sonderwetten;
+        ergebnisse = spieler.ergebnisse;
+
+    } else {
+
+        coins = 1000;
+        offeneWetten = [];
+        sonderwetten = [];
+        ergebnisse = {};
+
+        speichernSpieler();
+
+    }
+
     spielerAnzeige.innerHTML = "👤 " + name;
     coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
 
-    localStorage.setItem("spieler", name);
+    localStorage.setItem("letzterSpieler", name);
+
+    aktualisiereOffeneWetten();
+    aktualisiereSonderwetten();
 
     alert("Willkommen " + name + "!");
 
@@ -824,3 +852,24 @@ function quoteSpeichern(spielId) {
     alert("✅ Quoten gespeichert!");
 
 }
+function speichernSpieler() {
+
+    if (aktuellerSpieler === "") return;
+
+    const spieler = {
+
+        coins: coins,
+        offeneWetten: offeneWetten,
+        sonderwetten: sonderwetten,
+        ergebnisse: ergebnisse
+
+    };
+
+    localStorage.setItem(
+        "spieler_" + aktuellerSpieler,
+        JSON.stringify(spieler)
+    );
+
+}
+
+
