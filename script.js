@@ -252,6 +252,7 @@ function zeigeCoinsAufladen() {
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
     document.getElementById("quotenSeite").style.display = "none";
+    ladeSpielerliste();
     document.getElementById("coinsSeite").style.display = "block";
 
 }
@@ -986,4 +987,20 @@ function coinsAufladen() {
     );
 
 }
+function ladeSpielerliste() {
 
+    const auswahl = document.getElementById("coinsSpieler");
+
+    auswahl.innerHTML = "";
+
+    for (let name of spielerliste) {
+
+        auswahl.innerHTML += `
+            <option value="${name}">
+                ${name}
+            </option>
+        `;
+
+    }
+
+}
