@@ -290,6 +290,7 @@ function zeigeErgebnisse() {
     document.getElementById("ergebnisseSeite").style.display = "block";
 
     ladeErgebnisse();
+    }
     function ergebnisSpeichern(spielId, ergebnis) {
 
     ergebnisse[spielId] = ergebnis;
