@@ -296,10 +296,11 @@ function zeigeErgebnisse() {
     ergebnisse[spielId] = ergebnis;
 
     ladeErgebnisse();
+        }
 
     alert("✅ Ergebnis gespeichert!");
 
-}
+
 
 }
 function teamsSpeichern() {
