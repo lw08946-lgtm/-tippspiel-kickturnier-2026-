@@ -909,6 +909,45 @@ speichernSpieler();
     alert("✅ Quoten gespeichert!");
 
 }
+function coinsAufladen() {
+
+    const name = document.getElementById("coinsSpieler").value.trim();
+    const euro = Number(document.getElementById("euroBetrag").value);
+
+    if (name === "") {
+        alert("Bitte Spielernamen eingeben.");
+        return;
+    }
+
+    if (!euro || euro <= 0) {
+        alert("Bitte gültigen Eurobetrag eingeben.");
+        return;
+    }
+
+    const daten = localStorage.getItem("spieler_" + name);
+
+    if (!daten) {
+        alert("Spieler nicht gefunden.");
+        return;
+    }
+
+    const spieler = JSON.parse(daten);
+
+    const coins = euro * 100;
+
+    spieler.coins += coins;
+
+    localStorage.setItem(
+        "spieler_" + name,
+        JSON.stringify(spieler)
+    );
+
+    alert(
+        "✅ " + name + " hat " +
+        coins + " Coins erhalten."
+    );
+
+}
 function speichernSpieler() {
 
     if (aktuellerSpieler === "") return;
