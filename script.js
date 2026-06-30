@@ -295,7 +295,7 @@ function ergebnisSpeichern(spielId, ergebnis) {
 
     ergebnisse[spielId] = ergebnis;
 
-    // pruefeOffeneWetten();
+pruefeOffeneWetten();
 
     ladeErgebnisse();
 
