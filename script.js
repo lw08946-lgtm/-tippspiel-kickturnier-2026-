@@ -636,5 +636,55 @@ function sonderwetteAuswaehlen(titel, antwort, quote) {
     berechneGewinn();
 
 }
+function ladeErgebnisse() {
+
+    const liste = document.getElementById("ergebnisseListe");
+
+    liste.innerHTML = "";
+
+    for (let spiel of spiele) {
+
+        liste.innerHTML += `
+
+        <div class="spiel">
+
+            <strong>${spiel.heim} - ${spiel.gast}</strong>
+
+            <br><br>
+
+            <button onclick="ergebnisSpeichern(${spiel.id}, '1')">
+                🏠 Heimsieg
+            </button>
+
+            <br><br>
+
+            <button onclick="ergebnisSpeichern(${spiel.id}, 'X')">
+                🤝 Unentschieden
+            </button>
+
+            <br><br>
+
+            <button onclick="ergebnisSpeichern(${spiel.id}, '2')">
+                ✈️ Auswärtssieg
+            </button>
+
+        </div>
+
+        <br>
+
+        `;
+
+    }
+
+}
+function ergebnisSpeichern(spielId, ergebnis) {
+
+    ergebnisse[spielId] = ergebnis;
+
+    alert("✅ Ergebnis gespeichert!");
+
+}
+
+
 
 
