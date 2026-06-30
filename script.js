@@ -909,6 +909,28 @@ speichernSpieler();
     alert("✅ Quoten gespeichert!");
 
 }
+function speichernSpieler() {
+
+    if (aktuellerSpieler === "") return;
+
+    const spieler = {
+
+    coins: coins,
+    offeneWetten: offeneWetten,
+    sonderwetten: sonderwetten,
+    ergebnisse: ergebnisse,
+    ausgezahlteWetten: ausgezahlteWetten
+
+};
+
+    };
+
+    localStorage.setItem(
+        "spieler_" + aktuellerSpieler,
+        JSON.stringify(spieler)
+    );
+
+}
 function coinsAufladen() {
 
     const name = document.getElementById("coinsSpieler").value.trim();
@@ -948,27 +970,4 @@ function coinsAufladen() {
     );
 
 }
-function speichernSpieler() {
-
-    if (aktuellerSpieler === "") return;
-
-    const spieler = {
-
-    coins: coins,
-    offeneWetten: offeneWetten,
-    sonderwetten: sonderwetten,
-    ergebnisse: ergebnisse,
-    ausgezahlteWetten: ausgezahlteWetten
-
-};
-
-    };
-
-    localStorage.setItem(
-        "spieler_" + aktuellerSpieler,
-        JSON.stringify(spieler)
-    );
-
-}
-
 
