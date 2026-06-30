@@ -6,130 +6,144 @@
 }
 
 body{
-    background:#121212;
-    color:#ffffff;
+    background:#f4f6f9;
+    color:#0A2342;
 }
 
 header{
-    background:#1b1b1b;
-    padding:20px;
-    border-bottom:3px solid #00c853;
+    background:#ffffff;
+    padding:25px;
+    border-bottom:4px solid #0A2342;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
 header h1{
     text-align:center;
-    color:#00e676;
-    margin-bottom:15px;
+    color:#0A2342;
+    font-size:34px;
+    margin-bottom:20px;
 }
 
 .spielerbox{
     display:flex;
     justify-content:space-between;
-    background:#262626;
-    padding:12px;
-    border-radius:10px;
+    align-items:center;
+    background:#eef3fa;
+    padding:15px;
+    border-radius:12px;
+    font-weight:bold;
 }
 
 nav{
     display:flex;
-    gap:10px;
+    gap:12px;
     overflow-x:auto;
     padding:15px;
-    background:#1b1b1b;
+    background:#ffffff;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
 nav button{
-    min-width:110px;
+    min-width:120px;
 }
 
 main{
-    padding:15px;
+    padding:20px;
 }
 
 .karte{
-    background:#222;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,.35);
+    background:#ffffff;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .karte h2{
-    margin-bottom:15px;
-    color:#00e676;
+    color:#0A2342;
+    margin-bottom:20px;
+    font-size:26px;
 }
 
 input{
     width:100%;
-    padding:14px;
+    padding:15px;
     margin:10px 0;
-    border:none;
-    border-radius:10px;
-    background:#333;
-    color:white;
-    font-size:16px;
+    border:2px solid #d8dee9;
+    border-radius:12px;
+    font-size:17px;
+    background:white;
+    color:#0A2342;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
 }
 
 button{
     width:100%;
-    padding:14px;
+    padding:15px;
     border:none;
-    border-radius:10px;
-    background:#16a34a;
+    border-radius:12px;
+    background:#0A2342;
     color:white;
-    font-size:16px;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
-    transition:0.2s;
+    transition:.2s;
 }
 
 button:hover{
-    background:#15803d;
+    background:#153d70;
 }
 
 .spiel{
-    background:#2c2c2c;
-    border-radius:12px;
-    padding:18px;
-    margin-bottom:18px;
+    background:#f8fafc;
+    border:2px solid #e5e7eb;
+    border-radius:16px;
+    padding:22px;
+    margin-bottom:22px;
 }
 
 .spiel strong{
     display:block;
     text-align:center;
-    font-size:18px;
+    font-size:22px;
+    color:#0A2342;
 }
 
 .quoten{
     display:flex;
-    gap:12px;
-    margin:18px 0;
+    gap:15px;
+    margin:22px 0;
 }
 
 .quoten button{
     flex:1;
     width:auto;
-    padding:16px 0;
-    font-size:18px;
-    border-radius:10px;
-    background:#3a3a3a;
+    background:#0A2342;
+    color:white;
+    font-size:20px;
+    padding:18px 0;
 }
 
 .quoten button:hover{
-    background:#00c853;
+    background:#2563eb;
 }
 
 #wettscheinListe p{
-    background:#2b2b2b;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:10px;
-    line-height:1.5;
+    background:#eef3fa;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:12px;
+    line-height:1.6;
+    color:#0A2342;
 }
 
 hr{
     border:none;
-    height:1px;
-    background:#444;
-    margin:20px 0;
+    height:2px;
+    background:#d8dee9;
+    margin:25px 0;
 }
