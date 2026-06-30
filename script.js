@@ -401,6 +401,17 @@ function wettePlatzieren() {
     }
 
     offeneWetten.push({
+        offeneWetten.push({
+
+    id: Date.now(),
+
+    tipps: [...wettschein],
+    einsatz: einsatz,
+    quote: gesamtquote,
+    moeglicherGewinn: einsatz * gesamtquote,
+    status: "🟡 Offen"
+
+});
 
         tipps: [...wettschein],
         einsatz: einsatz,
