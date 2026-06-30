@@ -11,6 +11,7 @@ let sonderwetten = [];
 let ergebnisse = {};
 let aktuellerSpieler = "";
 let ausgezahlteWetten = [];
+let spielerliste = [];
 
 let spiele = [
 
@@ -56,7 +57,16 @@ function login() {
     }
 
     aktuellerSpieler = name;
+if (!spielerliste.includes(name)) {
 
+    spielerliste.push(name);
+
+    localStorage.setItem(
+        "spielerliste",
+        JSON.stringify(spielerliste)
+    );
+
+}
     const daten = localStorage.getItem("spieler_" + name);
 
     if (daten) {
@@ -96,7 +106,13 @@ window.onload = function () {
 
     spieleAnzeigen();
     zeigeStart();
+    const liste = localStorage.getItem("spielerliste");
 
+if (liste) {
+
+    spielerliste = JSON.parse(liste);
+
+}
     const letzterSpieler = localStorage.getItem("letzterSpieler");
 
     if (letzterSpieler) {
