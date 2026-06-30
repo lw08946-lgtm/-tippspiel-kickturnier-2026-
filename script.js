@@ -176,6 +176,7 @@ function zeigeStart() {
 document.getElementById("adminSeite").style.display = "none";
     document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
 }
 
 function zeigeSpiele() {
@@ -186,6 +187,7 @@ function zeigeSpiele() {
 document.getElementById("adminSeite").style.display = "none";
     document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
 }
 
 function zeigeWettschein() {
@@ -196,6 +198,19 @@ function zeigeWettschein() {
 document.getElementById("adminSeite").style.display = "none";
     document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
+}
+function zeigeSonderwetten() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("meineWettenSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "none";
+    document.getElementById("neuesSpielSeite").style.display = "none";
+
+    document.getElementById("sonderwettenSeite").style.display = "block";
+
 }
 function zeigeMeineWetten() {
 
@@ -205,6 +220,7 @@ function zeigeMeineWetten() {
     document.getElementById("meineWettenSeite").style.display = "block";
     document.getElementById("adminSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
 
 }
 function zeigeAdmin() {
@@ -222,6 +238,7 @@ function zeigeAdmin() {
     document.getElementById("adminSeite").style.display = "block";
 document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
 }
 function zeigeNeuesSpiel() {
 
@@ -230,7 +247,7 @@ function zeigeNeuesSpiel() {
     document.getElementById("wettscheinSeite").style.display = "none";
     document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("adminSeite").style.display = "none";
-
+document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "block";
 
 }
