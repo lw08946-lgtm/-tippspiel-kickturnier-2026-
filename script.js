@@ -1004,3 +1004,4 @@ function ladeSpielerliste() {
     }
 
 }
+console.log("Firebase verbunden:", window.db);
