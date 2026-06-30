@@ -64,9 +64,10 @@ function login() {
         const spieler = JSON.parse(daten);
 
         coins = spieler.coins;
-        offeneWetten = spieler.offeneWetten;
-        sonderwetten = spieler.sonderwetten;
-        ergebnisse = spieler.ergebnisse;
+offeneWetten = spieler.offeneWetten;
+sonderwetten = spieler.sonderwetten;
+ergebnisse = spieler.ergebnisse;
+ausgezahlteWetten = spieler.ausgezahlteWetten || [];
 
     } else {
 
@@ -111,9 +112,10 @@ window.onload = function () {
             const spieler = JSON.parse(daten);
 
             coins = spieler.coins;
-            offeneWetten = spieler.offeneWetten;
-            sonderwetten = spieler.sonderwetten;
-            ergebnisse = spieler.ergebnisse;
+offeneWetten = spieler.offeneWetten;
+sonderwetten = spieler.sonderwetten;
+ergebnisse = spieler.ergebnisse;
+ausgezahlteWetten = spieler.ausgezahlteWetten || [];
 
             spielerAnzeige.innerHTML = "👤 " + letzterSpieler;
             coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
@@ -898,10 +900,13 @@ function speichernSpieler() {
 
     const spieler = {
 
-        coins: coins,
-        offeneWetten: offeneWetten,
-        sonderwetten: sonderwetten,
-        ergebnisse: ergebnisse
+    coins: coins,
+    offeneWetten: offeneWetten,
+    sonderwetten: sonderwetten,
+    ergebnisse: ergebnisse,
+    ausgezahlteWetten: ausgezahlteWetten
+
+};
 
     };
 
