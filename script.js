@@ -923,7 +923,7 @@ function speichernSpieler() {
 
 };
 
-    };
+
 
     localStorage.setItem(
         "spieler_" + aktuellerSpieler,
