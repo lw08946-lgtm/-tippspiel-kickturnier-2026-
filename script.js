@@ -413,13 +413,6 @@ function wettePlatzieren() {
 
 });
 
-        tipps: [...wettschein],
-        einsatz: einsatz,
-        quote: gesamtquote,
-        moeglicherGewinn: einsatz * gesamtquote,
-        status: "🟡 Offen"
-
-    });
 
     coins -= einsatz;
 
