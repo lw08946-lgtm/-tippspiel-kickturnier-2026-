@@ -343,7 +343,7 @@ function ergebnisSpeichern(spielId, ergebnis) {
 pruefeOffeneWetten();
 
     ladeErgebnisse();
-
+speichernSpieler();
     alert("✅ Ergebnis gespeichert!");
 
 }
@@ -474,7 +474,7 @@ function wettePlatzieren() {
 
     document.getElementById("gesamtQuote").innerHTML = "1.00";
     document.getElementById("moeglicherGewinn").innerHTML = "0.00 Coins";
-
+speichernSpieler();
     alert("✅ Wette erfolgreich platziert!");
 
 }
@@ -848,7 +848,7 @@ function quoteSpeichern(spielId) {
     spiel.q2 = Number(document.getElementById("q2_" + spielId).value);
 
     spieleAnzeigen();
-
+speichernSpieler();
     alert("✅ Quoten gespeichert!");
 
 }
