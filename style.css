@@ -32,8 +32,8 @@ header h1{
 
 nav{
     display:flex;
-    overflow-x:auto;
     gap:10px;
+    overflow-x:auto;
     padding:15px;
     background:#1b1b1b;
 }
@@ -48,13 +48,15 @@ main{
 
 .karte{
     background:#222;
-    border-radius:12px;
+    border-radius:14px;
     padding:20px;
     margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.35);
 }
 
 .karte h2{
     margin-bottom:15px;
+    color:#00e676;
 }
 
 input{
@@ -66,11 +68,13 @@ input{
     background:#333;
     color:white;
     font-size:16px;
+}
+
 button{
     width:100%;
     padding:14px;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
     background:#16a34a;
     color:white;
     font-size:16px;
@@ -81,42 +85,51 @@ button{
 
 button:hover{
     background:#15803d;
-    transform:scale(1.03);
-}
-
-button:active{
-    transform:scale(0.98);
 }
 
 .spiel{
-    background:#2b2b2b;
-    border-radius:10px;
-    padding:15px;
+    background:#2c2c2c;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+.spiel strong{
+    display:block;
+    text-align:center;
+    font-size:18px;
 }
 
 .quoten{
     display:flex;
-    gap:10px;
-    margin:15px 0;
+    gap:12px;
+    margin:18px 0;
 }
 
 .quoten button{
     flex:1;
-}
-.quoten button{
-
-    background:#2f9e44;
-
+    width:auto;
+    padding:16px 0;
+    font-size:18px;
+    border-radius:10px;
+    background:#3a3a3a;
 }
 
 .quoten button:hover{
-
-    background:#37b24d;
-
+    background:#00c853;
 }
 
-.karte{
+#wettscheinListe p{
+    background:#2b2b2b;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+    line-height:1.5;
+}
 
-    box-shadow:0 0 15px rgba(0,0,0,.35);
-
+hr{
+    border:none;
+    height:1px;
+    background:#444;
+    margin:20px 0;
 }
