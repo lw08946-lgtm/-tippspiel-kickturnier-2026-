@@ -755,3 +755,60 @@ function pruefeOffeneWetten() {
     aktualisiereOffeneWetten();
 
 }
+function ladeQuoten() {
+
+    const liste = document.getElementById("quotenListe");
+
+    liste.innerHTML = "";
+
+    for (let spiel of spiele) {
+
+        liste.innerHTML += `
+
+        <div class="spiel">
+
+            <strong>${spiel.heim} - ${spiel.gast}</strong>
+
+            <br><br>
+
+            Heimsieg:
+            <input
+                id="q1_${spiel.id}"
+                type="number"
+                step="0.01"
+                value="${spiel.q1}">
+
+            <br><br>
+
+            Unentschieden:
+            <input
+                id="qx_${spiel.id}"
+                type="number"
+                step="0.01"
+                value="${spiel.qx}">
+
+            <br><br>
+
+            Auswärtssieg:
+            <input
+                id="q2_${spiel.id}"
+                type="number"
+                step="0.01"
+                value="${spiel.q2}">
+
+            <br><br>
+
+            <button onclick="quoteSpeichern(${spiel.id})">
+                💾 Quoten speichern
+            </button>
+
+        </div>
+
+        <br>
+
+        `;
+
+    }
+
+}
+
