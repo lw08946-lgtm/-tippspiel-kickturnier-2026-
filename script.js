@@ -699,7 +699,7 @@ function ladeErgebnisse() {
         `;
 
     }
-    function pruefeOffeneWetten() {
+function pruefeOffeneWetten() {
 
     for (let wette of offeneWetten) {
 
@@ -707,6 +707,12 @@ function ladeErgebnisse() {
         let alleErgebnisseVorhanden = true;
 
         for (let tipp of wette.tipps) {
+
+            alert(
+                "Tipp: " + tipp.text +
+                "\nGespeichertes Ergebnis im Tipp: " + tipp.ergebnis +
+                "\nErgebnis im System: " + ergebnisse[tipp.spielId]
+            );
 
             if (!(tipp.spielId in ergebnisse)) {
                 alleErgebnisseVorhanden = false;
@@ -720,22 +726,15 @@ function ladeErgebnisse() {
         }
 
         if (gewonnen && alleErgebnisseVorhanden) {
-
             wette.status = "🟢 Gewonnen";
-
         } else if (!gewonnen && alleErgebnisseVorhanden) {
-
             wette.status = "🔴 Verloren";
-
         } else {
-
             wette.status = "🟡 Offen";
-
         }
 
     }
 
     aktualisiereOffeneWetten();
-
 }
  }
