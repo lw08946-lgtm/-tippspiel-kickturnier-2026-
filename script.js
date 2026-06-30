@@ -76,20 +76,23 @@ zeigeStart();
     
 };
 
-function wetteAuswaehlen(spielId, spiel, text, quote, button) {
-if (aktiveButtons[spielId]) {
-    aktiveButtons[spielId].style.background = "#0A2342";
-}
+function wetteAuswaehlen(spielId, spiel, text, ergebnis, quote, button) {
 
-button.style.background = "#2563eb";
+    if (aktiveButtons[spielId]) {
+        aktiveButtons[spielId].style.background = "#0A2342";
+    }
 
-aktiveButtons[spielId] = button;
+    button.style.background = "#2563eb";
+
+    aktiveButtons[spielId] = button;
+
     wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
 
     wettschein.push({
         spielId: spielId,
         spiel: spiel,
         text: text,
+        ergebnis: ergebnis,
         quote: quote
     });
 
@@ -99,9 +102,9 @@ aktiveButtons[spielId] = button;
     for (let tipp of wettschein) {
 
         liste.innerHTML +=
-        "<p><strong>" + tipp.spiel + "</strong><br>" +
-        "✔️ " + tipp.text +
-        " (" + tipp.quote.toFixed(2) + ")</p>";
+            "<p><strong>" + tipp.spiel + "</strong><br>" +
+            "✔️ " + tipp.text +
+            " (" + tipp.quote.toFixed(2) + ")</p>";
 
     }
 
@@ -145,15 +148,15 @@ function spieleAnzeigen() {
 
             <div class="quoten">
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.heim} Sieg', ${spiel.q1}, this)">
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.heim} Sieg', '1', ${spiel.q1}, this)">
                     ${spiel.q1.toFixed(2)}
                 </button>
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', 'Unentschieden', ${spiel.qx}, this)">
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', 'Unentschieden', 'X', ${spiel.qx}, this)">
                     ${spiel.qx.toFixed(2)}
                 </button>
 
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.gast} Sieg', ${spiel.q2}, this)">
+                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.gast} Sieg', '2', ${spiel.q2}, this)">
                     ${spiel.q2.toFixed(2)}
                 </button>
 
@@ -166,8 +169,6 @@ function spieleAnzeigen() {
         `;
 
     }
-
-
 
 }
 function zeigeStart() {
