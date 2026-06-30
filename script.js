@@ -346,7 +346,7 @@ function wettePlatzieren() {
 }
 
    function aktualisiereOffeneWetten() {
-
+alert("aktualisiereOffeneWetten wurde aufgerufen");
     const liste =
         document.getElementById("offeneWettenListe");
 
