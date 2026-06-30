@@ -68,7 +68,8 @@ window.onload = function () {
     }
 
     spieleAnzeigen();
-
+zeigeStart();
+    
 };
 
 function wetteAuswaehlen(spielId, spiel, text, quote) {
@@ -155,5 +156,41 @@ function spieleAnzeigen() {
         `;
 
     }
+
+}
+function zeigeStart() {
+
+    document.getElementById("startSeite").style.display = "block";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+
+}
+
+function zeigeSpiele() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "block";
+    document.getElementById("wettscheinSeite").style.display = "none";
+
+}
+
+function zeigeWettschein() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "block";
+
+}
+
+function zeigeAdmin() {
+
+    const passwort = prompt("Admin-Passwort:");
+
+    if (passwort !== "1234") {
+        alert("Falsches Passwort!");
+        return;
+    }
+
+    alert("Adminbereich folgt im nächsten Schritt.");
 
 }
