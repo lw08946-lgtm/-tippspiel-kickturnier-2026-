@@ -74,7 +74,13 @@ zeigeStart();
 };
 
 function wetteAuswaehlen(spielId, spiel, text, quote, button) {
+if (aktiveButtons[spielId]) {
+    aktiveButtons[spielId].style.background = "#0A2342";
+}
 
+button.style.background = "#2563eb";
+
+aktiveButtons[spielId] = button;
     wettschein = wettschein.filter(tipp => tipp.spielId !== spielId);
 
     wettschein.push({
