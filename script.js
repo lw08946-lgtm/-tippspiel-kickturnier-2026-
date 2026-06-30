@@ -163,7 +163,7 @@ function zeigeStart() {
     document.getElementById("startSeite").style.display = "block";
     document.getElementById("spieleSeite").style.display = "none";
     document.getElementById("wettscheinSeite").style.display = "none";
-
+document.getElementById("adminSeite").style.display = "none";
 }
 
 function zeigeSpiele() {
@@ -171,7 +171,7 @@ function zeigeSpiele() {
     document.getElementById("startSeite").style.display = "none";
     document.getElementById("spieleSeite").style.display = "block";
     document.getElementById("wettscheinSeite").style.display = "none";
-
+document.getElementById("adminSeite").style.display = "none";
 }
 
 function zeigeWettschein() {
@@ -179,7 +179,7 @@ function zeigeWettschein() {
     document.getElementById("startSeite").style.display = "none";
     document.getElementById("spieleSeite").style.display = "none";
     document.getElementById("wettscheinSeite").style.display = "block";
-
+document.getElementById("adminSeite").style.display = "none";
 }
 
 function zeigeAdmin() {
