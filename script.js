@@ -1101,6 +1101,34 @@ async function speichereQuotenOnline() {
     }
 
 }
+function ladeQuotenOnline() {
+
+    db.collection("turnier")
+        .doc("quoten")
+        .onSnapshot((doc) => {
+
+            if (!doc.exists) return;
+
+            const daten = doc.data().spiele;
+
+            for (let i = 0; i < spiele.length; i++) {
+
+                spiele[i].q1 = daten[i].q1;
+                spiele[i].qx = daten[i].qx;
+                spiele[i].q2 = daten[i].q2;
+
+            }
+
+            spieleAnzeigen();
+            ladeQuoten();
+
+        }, (error) => {
+
+            alert("❌ Fehler beim Laden der Quoten: " + error.message);
+
+        });
+
+}
 async function ladeErgebnisseOnline() {
 
     db.collection("turnier")
@@ -1161,6 +1189,8 @@ window.onload = function () {
     ladeTeamsOnline();
 
     ladeErgebnisseOnline();
+
+    ladeQuotenOnline();
 
     const liste = localStorage.getItem("spielerliste");
 
