@@ -726,10 +726,6 @@ function aktualisiereSonderwetten() {
 
             ${antwortenHTML}
 
-            <button onclick="sonderwetteLoeschen('${wette.titel}')">
-                🗑️ Sonderwette löschen
-            </button>
-
         </div>
 
         `;
@@ -737,51 +733,7 @@ function aktualisiereSonderwetten() {
     }
 
 }
-function sonderwetteAuswaehlen(titel, antwort, quote) {
 
-    wettschein.push({
-
-        spielId: "sonder_" + titel,
-
-        spiel: titel,
-
-        text: antwort,
-
-        quote: quote,
-
-        typ: "sonder"
-
-    });
-
-    const liste = document.getElementById("wettscheinListe");
-
-    liste.innerHTML = "";
-
-    for (let tipp of wettschein) {
-
-        liste.innerHTML +=
-        "<p><strong>" + tipp.spiel + "</strong><br>" +
-        "✔️ " + tipp.text +
-        " (" + tipp.quote.toFixed(2) + ")</p>";
-
-    }
-
-    berechneGewinn();
-
-}
-async function sonderwetteLoeschen(titel) {
-
-    if (!confirm("Sonderwette wirklich löschen?")) return;
-
-    sonderwetten = sonderwetten.filter(w => w.titel !== titel);
-
-    await speichereSonderwettenOnline();
-
-    aktualisiereSonderwetten();
-
-    alert("✅ Sonderwette gelöscht");
-
-}
 function ladeErgebnisse() {
 
     const liste = document.getElementById("ergebnisseListe");
