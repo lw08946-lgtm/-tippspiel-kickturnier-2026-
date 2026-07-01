@@ -643,7 +643,7 @@ function spielHinzufuegen() {
     zeigeSpiele();
 
 }
-function sonderwetteHinzufuegen() {
+async function sonderwetteHinzufuegen() {
 
     const titel = document.getElementById("sonderTitel").value;
 
@@ -673,7 +673,6 @@ function sonderwetteHinzufuegen() {
     if (antworten.length < 2) {
 
         alert("Mindestens zwei Antworten eingeben.");
-
         return;
 
     }
@@ -684,6 +683,8 @@ function sonderwetteHinzufuegen() {
         antworten: antworten
 
     });
+
+    await speichereSonderwettenOnline();
 
     aktualisiereSonderwetten();
 
