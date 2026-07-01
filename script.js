@@ -94,7 +94,7 @@ async function login() {
 
             coins = spieler.coins || 1000;
             offeneWetten = spieler.offeneWetten || [];
-            sonderwetten = spieler.sonderwetten || [];
+            // Sonderwetten werden jetzt global aus Firestore geladen
             ergebnisse = spieler.ergebnisse || {};
             ausgezahlteWetten = spieler.ausgezahlteWetten || [];
 
@@ -1241,7 +1241,7 @@ function ladeSpielerOnline(name) {
 
             coins = spieler.coins || 1000;
             offeneWetten = spieler.offeneWetten || [];
-            sonderwetten = spieler.sonderwetten || [];
+            // Sonderwetten werden jetzt global aus Firestore geladen
             ergebnisse = spieler.ergebnisse || {};
             ausgezahlteWetten = spieler.ausgezahlteWetten || [];
 
