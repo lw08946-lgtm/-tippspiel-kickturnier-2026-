@@ -119,6 +119,7 @@ window.onload = function () {
 
     spieleAnzeigen();
     zeigeStart();
+    ladeTeamsOnline();
     const liste = localStorage.getItem("spielerliste");
 
 if (liste) {
@@ -1021,8 +1022,6 @@ function ladeSpielerliste() {
 }
 async function speichereTeamsOnline() {
 
-    alert("🚀 speichereTeamsOnline gestartet");
-
     try {
 
         await db.collection("turnier")
@@ -1031,11 +1030,32 @@ async function speichereTeamsOnline() {
                 spiele: spiele
             });
 
-        alert("✅ Teams wurden erfolgreich online gespeichert!");
-
     } catch (error) {
 
         alert("❌ Fehler: " + error);
+
+    }
+
+}
+async function ladeTeamsOnline() {
+
+    try {
+
+        const doc = await db.collection("turnier")
+            .doc("teams")
+            .get();
+
+        if (!doc.exists) return;
+
+        const daten = doc.data();
+
+        spiele = daten.spiele;
+
+        spieleAnzeigen();
+
+    } catch (error) {
+
+        alert("❌ Fehler beim Laden: " + error);
 
     }
 
