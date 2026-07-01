@@ -1138,6 +1138,25 @@ function ladeQuotenOnline() {
         });
 
 }
+async function speichereSonderwettenOnline() {
+
+    try {
+
+        await db.collection("turnier")
+            .doc("sonderwetten")
+            .set({
+
+                sonderwetten: sonderwetten
+
+            });
+
+    } catch (error) {
+
+        alert("❌ Fehler beim Speichern: " + error.message);
+
+    }
+
+}
 async function ladeErgebnisseOnline() {
 
     db.collection("turnier")
