@@ -410,7 +410,7 @@ function zeigeErgebnisse() {
 function ergebnisSpeichern(spielId, ergebnis) {
 
     ergebnisse[spielId] = ergebnis;
-
+speichereErgebnisseOnline();
 pruefeOffeneWetten();
 
     ladeErgebnisse();
@@ -1056,6 +1056,23 @@ async function ladeTeamsOnline() {
     } catch (error) {
 
         alert("❌ Fehler beim Laden: " + error);
+
+    }
+
+}
+async function speichereErgebnisseOnline() {
+
+    try {
+
+        await db.collection("turnier")
+            .doc("ergebnisse")
+            .set({
+                ergebnisse: ergebnisse
+            });
+
+    } catch (error) {
+
+        alert("❌ Fehler beim Speichern der Ergebnisse: " + error);
 
     }
 
