@@ -1138,25 +1138,7 @@ function ladeQuotenOnline() {
         });
 
 }
-function ladeSonderwettenOnline() {
 
-    db.collection("turnier")
-        .doc("sonderwetten")
-        .onSnapshot((doc) => {
-
-            if (!doc.exists) return;
-
-            sonderwetten = doc.data().sonderwetten || [];
-
-            aktualisiereSonderwetten();
-
-        }, (error) => {
-
-            alert("❌ Fehler beim Laden der Sonderwetten: " + error.message);
-
-        });
-
-}
 async function speichereSonderwettenOnline() {
 
     try {
@@ -1174,6 +1156,34 @@ async function speichereSonderwettenOnline() {
         alert("❌ Fehler beim Speichern: " + error.message);
 
     }
+
+}
+function ladeSonderwettenOnline() {
+
+    alert("📥 ladeSonderwettenOnline gestartet");
+
+    db.collection("turnier")
+        .doc("sonderwetten")
+        .onSnapshot((doc) => {
+
+            alert("📡 Firestore hat Daten gesendet");
+
+            if (!doc.exists) {
+                alert("❌ Dokument sonderwetten existiert nicht");
+                return;
+            }
+
+            sonderwetten = doc.data().sonderwetten || [];
+
+            alert("✅ Geladene Sonderwetten: " + sonderwetten.length);
+
+            aktualisiereSonderwetten();
+
+        }, (error) => {
+
+            alert("❌ Fehler: " + error.message);
+
+        });
 
 }
 async function ladeErgebnisseOnline() {
