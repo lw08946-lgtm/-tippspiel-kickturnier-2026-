@@ -192,34 +192,16 @@ function spieleAnzeigen() {
 
     spieleListe.innerHTML = "";
 
+    alert("Anzahl Spiele: " + spiele.length);
+
     for (let spiel of spiele) {
 
         spieleListe.innerHTML += `
-
         <div class="spiel">
-
             <strong>${spiel.heim}</strong>
-
-            <div class="quoten">
-
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.heim} Sieg', '1', ${spiel.q1}, this)">
-                    ${spiel.q1.toFixed(2)}
-                </button>
-
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', 'Unentschieden', 'X', ${spiel.qx}, this)">
-                    ${spiel.qx.toFixed(2)}
-                </button>
-
-                <button onclick="wetteAuswaehlen(${spiel.id}, '${spiel.heim} - ${spiel.gast}', '${spiel.gast} Sieg', '2', ${spiel.q2}, this)">
-                    ${spiel.q2.toFixed(2)}
-                </button>
-
-            </div>
-
+            -
             <strong>${spiel.gast}</strong>
-
         </div>
-
         `;
 
     }
