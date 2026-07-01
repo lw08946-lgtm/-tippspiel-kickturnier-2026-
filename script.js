@@ -1038,27 +1038,23 @@ async function speichereTeamsOnline() {
     }
 
 }
-async function ladeTeamsOnline() {
+function ladeTeamsOnline() {
 
-    try {
+    db.collection("turnier")
+        .doc("teams")
+        .onSnapshot((doc) => {
 
-        const doc = await db.collection("turnier")
-            .doc("teams")
-            .get();
+            if (!doc.exists) return;
 
-        if (!doc.exists) return;
+            spiele = doc.data().spiele;
 
-        const daten = doc.data();
+            spieleAnzeigen();
 
-        spiele = daten.spiele;
+        }, (error) => {
 
-        spieleAnzeigen();
+            alert("❌ Fehler beim Laden der Teams: " + error);
 
-    } catch (error) {
-
-        alert("❌ Fehler beim Laden: " + error);
-
-    }
+        });
 
 }
 async function speichereErgebnisseOnline() {
