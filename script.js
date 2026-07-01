@@ -1023,17 +1023,27 @@ function ladeSpielerliste() {
 }
 async function speichereTeamsOnline() {
 
+    console.log("Spiele:", spiele);
+
     try {
 
         await db.collection("turnier")
             .doc("teams")
             .set({
+                test: "Hallo Welt",
                 spiele: spiele
             });
 
+        alert("✅ Teams gespeichert");
+
     } catch (error) {
 
-        alert("❌ Fehler: " + error);
+        alert(
+            "Code: " + error.code +
+            "\nNachricht: " + error.message
+        );
+
+        console.error(error);
 
     }
 
