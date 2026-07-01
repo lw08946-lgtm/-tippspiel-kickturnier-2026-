@@ -850,6 +850,7 @@ async function sonderwetteAuswerten(index, richtigeAntwort) {
     if (!confirm("Soll '" + richtigeAntwort + "' als richtige Antwort gewertet werden?")) {
         return;
     }
+    await ladeAlleSpieler();
 
     sonderwetten[index].richtigeAntwort = richtigeAntwort;
     sonderwetten[index].ausgewertet = true;
@@ -1332,6 +1333,29 @@ async function speichereSpielerOnline() {
             error.code + "\n" +
             error.message
         );
+
+    }
+
+}
+async function ladeAlleSpieler() {
+
+    try {
+
+        const snapshot = await db.collection("spieler").get();
+
+        let anzahl = 0;
+
+        snapshot.forEach((doc) => {
+
+            anzahl++;
+
+        });
+
+        alert("👥 Gefundene Spieler: " + anzahl);
+
+    } catch (error) {
+
+        alert("❌ Fehler beim Laden der Spieler:\n" + error.message);
 
     }
 
