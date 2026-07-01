@@ -805,25 +805,57 @@ function aktualisiereAdminSonderwetten() {
 
     sonderwetten.forEach((wette, index) => {
 
+        let antworten = "";
+
+        wette.antworten.forEach((antwort) => {
+
+            antworten += `
+
+            <button onclick="sonderwetteAuswerten(${index}, '${antwort.text}')">
+                ✅ ${antwort.text}
+            </button>
+
+            <br><br>
+
+            `;
+
+        });
+
         liste.innerHTML += `
-            <div class="spiel">
 
-                <h3>${wette.titel}</h3>
+        <div class="spiel">
 
-                <button onclick="sonderwetteLoeschen(${index})">
-                    🗑️ Löschen
-                </button>
+            <h3>${wette.titel}</h3>
 
-                <br><br>
+            ${antworten}
 
-                <button onclick="sonderwetteAuswerten(${index})">
-                    ✅ Auswerten
-                </button>
+            <button onclick="sonderwetteLoeschen(${index})">
+                🗑️ Löschen
+            </button>
 
-            </div>
+        </div>
+
+        <br>
+
         `;
 
     });
+
+}
+async function sonderwetteAuswerten(index, richtigeAntwort) {
+
+    if (!confirm("Soll '" + richtigeAntwort + "' als richtige Antwort gewertet werden?")) {
+        return;
+    }
+
+    sonderwetten[index].richtigeAntwort = richtigeAntwort;
+    sonderwetten[index].ausgewertet = true;
+
+    await speichereSonderwettenOnline();
+
+    aktualisiereAdminSonderwetten();
+
+    alert("✅ Sonderwette wurde ausgewertet.");
 
 }
 function ladeErgebnisse() {
