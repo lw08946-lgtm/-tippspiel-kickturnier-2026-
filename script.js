@@ -937,7 +937,7 @@ function quoteSpeichern(spielId) {
     spiel.q1 = Number(document.getElementById("q1_" + spielId).value);
     spiel.qx = Number(document.getElementById("qx_" + spielId).value);
     spiel.q2 = Number(document.getElementById("q2_" + spielId).value);
-
+speichereQuotenOnline();
     spieleAnzeigen();
 speichernSpieler();
     alert("✅ Quoten gespeichert!");
@@ -1074,6 +1074,23 @@ async function speichereErgebnisseOnline() {
     } catch (error) {
 
         alert("❌ Fehler beim Speichern der Ergebnisse: " + error);
+
+    }
+
+}
+async function speichereQuotenOnline() {
+
+    try {
+
+        await db.collection("turnier")
+            .doc("quoten")
+            .set({
+                spiele: spiele
+            });
+
+    } catch (error) {
+
+        alert("❌ Fehler beim Speichern der Quoten: " + error);
 
     }
 
