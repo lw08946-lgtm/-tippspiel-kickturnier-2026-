@@ -120,6 +120,7 @@ window.onload = function () {
     spieleAnzeigen();
     zeigeStart();
     ladeTeamsOnline();
+    ladeErgebnisseOnline();
     const liste = localStorage.getItem("spielerliste");
 
 if (liste) {
@@ -1077,3 +1078,21 @@ async function speichereErgebnisseOnline() {
     }
 
 }
+async function ladeErgebnisseOnline() {
+
+    db.collection("turnier")
+        .doc("ergebnisse")
+        .onSnapshot((doc) => {
+
+            if (!doc.exists) return;
+
+            ergebnisse = doc.data().ergebnisse;
+
+            ladeErgebnisse();
+
+            pruefeOffeneWetten();
+
+        });
+
+}
+
