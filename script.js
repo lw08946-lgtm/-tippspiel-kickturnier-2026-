@@ -60,7 +60,7 @@ const loginButton = document.getElementById("loginButton");
 
 loginButton.addEventListener("click", login);
 
-function login() {
+async function login() {
 
     const name = document.getElementById("name").value.trim();
 
@@ -70,96 +70,66 @@ function login() {
     }
 
     aktuellerSpieler = name;
-if (!spielerliste.includes(name)) {
 
-    spielerliste.push(name);
+    if (!spielerliste.includes(name)) {
 
-    localStorage.setItem(
-        "spielerliste",
-        JSON.stringify(spielerliste)
-    );
+        spielerliste.push(name);
 
-}
-    const daten = localStorage.getItem("spieler_" + name);
-
-    if (daten) {
-
-        const spieler = JSON.parse(daten);
-
-        coins = spieler.coins;
-offeneWetten = spieler.offeneWetten;
-sonderwetten = spieler.sonderwetten;
-ergebnisse = spieler.ergebnisse;
-ausgezahlteWetten = spieler.ausgezahlteWetten || [];
-
-    } else {
-
-        coins = 1000;
-        offeneWetten = [];
-        sonderwetten = [];
-        ergebnisse = {};
-
-        speichernSpieler();
+        localStorage.setItem(
+            "spielerliste",
+            JSON.stringify(spielerliste)
+        );
 
     }
 
-    spielerAnzeige.innerHTML = "👤 " + name;
-    coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+    try {
 
-    localStorage.setItem("letzterSpieler", name);
+        const doc = await db.collection("spieler")
+            .doc(name)
+            .get();
 
-    aktualisiereOffeneWetten();
-    aktualisiereSonderwetten();
+        if (doc.exists) {
 
-    alert("Willkommen " + name + "!");
+            const spieler = doc.data();
 
-}
+            coins = spieler.coins || 1000;
+            offeneWetten = spieler.offeneWetten || [];
+            sonderwetten = spieler.sonderwetten || [];
+            ergebnisse = spieler.ergebnisse || {};
+            ausgezahlteWetten = spieler.ausgezahlteWetten || [];
 
-window.onload = function () {
+        } else {
 
-    spieleAnzeigen();
-    zeigeStart();
-    ladeTeamsOnline();
-    ladeErgebnisseOnline();
-    const liste = localStorage.getItem("spielerliste");
+            coins = 1000;
+            offeneWetten = [];
+            sonderwetten = [];
+            ergebnisse = {};
+            ausgezahlteWetten = [];
 
-if (liste) {
-
-    spielerliste = JSON.parse(liste);
-
-}
-    const letzterSpieler = localStorage.getItem("letzterSpieler");
-
-    if (letzterSpieler) {
-
-        document.getElementById("name").value = letzterSpieler;
-
-        aktuellerSpieler = letzterSpieler;
-
-        const daten = localStorage.getItem("spieler_" + letzterSpieler);
-
-        if (daten) {
-
-            const spieler = JSON.parse(daten);
-
-            coins = spieler.coins;
-offeneWetten = spieler.offeneWetten;
-sonderwetten = spieler.sonderwetten;
-ergebnisse = spieler.ergebnisse;
-ausgezahlteWetten = spieler.ausgezahlteWetten || [];
-
-            spielerAnzeige.innerHTML = "👤 " + letzterSpieler;
-            coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
-
-            aktualisiereOffeneWetten();
-            aktualisiereSonderwetten();
+            await speichereSpielerOnline();
 
         }
 
+        spielerAnzeige.innerHTML = "👤 " + name;
+        coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+
+        localStorage.setItem("letzterSpieler", name);
+
+        aktualisiereOffeneWetten();
+        aktualisiereSonderwetten();
+
+        alert("Willkommen " + name + "!");
+
+    } catch (error) {
+
+        alert(
+            "❌ Fehler beim Laden des Spielers:\n" +
+            error.message
+        );
+
     }
 
-};
-
+}
 function wetteAuswaehlen(spielId, spiel, text, ergebnis, quote, button) {
 
     if (aktiveButtons[spielId]) {
