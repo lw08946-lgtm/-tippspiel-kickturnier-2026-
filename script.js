@@ -733,6 +733,39 @@ function aktualisiereSonderwetten() {
     }
 
 }
+function aktualisiereAdminSonderwetten() {
+
+    const liste = document.getElementById("adminSonderwettenListe");
+
+    if (!liste) return;
+
+    liste.innerHTML = "";
+
+    for (let wette of sonderwetten) {
+
+        liste.innerHTML += `
+
+        <div class="spiel">
+
+            <h3>${wette.titel}</h3>
+
+            <button onclick="sonderwetteLoeschen('${wette.titel}')">
+                🗑️ Löschen
+            </button>
+
+            <br><br>
+
+            <button onclick="sonderwetteAuswerten('${wette.titel}')">
+                ✅ Auswerten
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+}
 
 function ladeErgebnisse() {
 
