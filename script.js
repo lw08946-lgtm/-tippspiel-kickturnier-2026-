@@ -1021,6 +1021,8 @@ function ladeSpielerliste() {
 }
 async function speichereTeamsOnline() {
 
+    alert("🚀 speichereTeamsOnline gestartet");
+
     try {
 
         await db.collection("turnier")
@@ -1029,11 +1031,11 @@ async function speichereTeamsOnline() {
                 spiele: spiele
             });
 
-        console.log("Teams online gespeichert");
+        alert("✅ Teams wurden erfolgreich online gespeichert!");
 
     } catch (error) {
 
-        console.error(error);
+        alert("❌ Fehler: " + error);
 
     }
 
