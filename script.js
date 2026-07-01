@@ -360,6 +360,7 @@ document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
     document.getElementById("quotenSeite").style.display = "none";
+    document.getElementById("adminSonderwettenSeite").style.display = "block";
 }
 function zeigeNeuesSpiel() {
 
