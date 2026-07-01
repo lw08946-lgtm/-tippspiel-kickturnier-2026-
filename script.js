@@ -257,7 +257,7 @@ function zeigeCoinsAufladen() {
     document.getElementById("quotenSeite").style.display = "none";
     ladeSpielerliste();
     document.getElementById("coinsSeite").style.display = "block";
-
+    document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeQuoten() {
 
@@ -286,6 +286,7 @@ document.getElementById("adminSeite").style.display = "none";
     document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
 }
 
 function zeigeSpiele() {
@@ -299,6 +300,7 @@ document.getElementById("adminSeite").style.display = "none";
     document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
 }
 
 function zeigeWettschein() {
@@ -312,6 +314,7 @@ document.getElementById("adminSeite").style.display = "none";
     document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeSonderwetten() {
 
@@ -323,7 +326,7 @@ function zeigeSonderwetten() {
     document.getElementById("neuesSpielSeite").style.display = "none";
 document.getElementById("ergebnisseSeite").style.display = "none";
     document.getElementById("sonderwettenSeite").style.display = "block";
-
+document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeMeineWetten() {
 
@@ -336,6 +339,7 @@ function zeigeMeineWetten() {
     document.getElementById("sonderwettenSeite").style.display = "none";
 document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeAdmin() {
 
@@ -355,6 +359,7 @@ document.getElementById("meineWettenSeite").style.display = "none";
     document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeNeuesSpiel() {
 
@@ -367,6 +372,7 @@ document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neuesSpielSeite").style.display = "block";
 document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeNeueSonderwette() {
 
@@ -379,7 +385,7 @@ function zeigeNeueSonderwette() {
     document.getElementById("sonderwettenSeite").style.display = "none";
 document.getElementById("ergebnisseSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "block";
-
+document.getElementById("quotenSeite").style.display = "none";
 }
 function zeigeErgebnisse() {
 
@@ -391,7 +397,7 @@ function zeigeErgebnisse() {
     document.getElementById("neuesSpielSeite").style.display = "none";
     document.getElementById("sonderwettenSeite").style.display = "none";
     document.getElementById("neueSonderwetteSeite").style.display = "none";
-
+document.getElementById("quotenSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "block";
 
     ladeErgebnisse();
