@@ -1080,6 +1080,8 @@ async function speichereErgebnisseOnline() {
 }
 async function speichereQuotenOnline() {
 
+    alert("🚀 speichereQuotenOnline gestartet");
+
     try {
 
         await db.collection("turnier")
@@ -1088,9 +1090,11 @@ async function speichereQuotenOnline() {
                 spiele: spiele
             });
 
+        alert("✅ Quoten wurden online gespeichert!");
+
     } catch (error) {
 
-        alert("❌ Fehler beim Speichern der Quoten: " + error);
+        alert("❌ Fehler: " + error);
 
     }
 
