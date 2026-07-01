@@ -1138,6 +1138,25 @@ function ladeQuotenOnline() {
         });
 
 }
+function ladeSonderwettenOnline() {
+
+    db.collection("turnier")
+        .doc("sonderwetten")
+        .onSnapshot((doc) => {
+
+            if (!doc.exists) return;
+
+            sonderwetten = doc.data().sonderwetten || [];
+
+            aktualisiereSonderwetten();
+
+        }, (error) => {
+
+            alert("❌ Fehler beim Laden der Sonderwetten: " + error.message);
+
+        });
+
+}
 async function speichereSonderwettenOnline() {
 
     try {
@@ -1247,6 +1266,8 @@ window.onload = function () {
     ladeErgebnisseOnline();
 
     ladeQuotenOnline();
+
+    ladeSonderwettenOnline();
 
     const liste = localStorage.getItem("spielerliste");
 
