@@ -726,6 +726,10 @@ function aktualisiereSonderwetten() {
 
             ${antwortenHTML}
 
+            <button onclick="sonderwetteLoeschen('${wette.titel}')">
+                🗑️ Sonderwette löschen
+            </button>
+
         </div>
 
         `;
@@ -763,6 +767,19 @@ function sonderwetteAuswaehlen(titel, antwort, quote) {
     }
 
     berechneGewinn();
+
+}
+async function sonderwetteLoeschen(titel) {
+
+    if (!confirm("Sonderwette wirklich löschen?")) return;
+
+    sonderwetten = sonderwetten.filter(w => w.titel !== titel);
+
+    await speichereSonderwettenOnline();
+
+    aktualisiereSonderwetten();
+
+    alert("✅ Sonderwette gelöscht");
 
 }
 function ladeErgebnisse() {
