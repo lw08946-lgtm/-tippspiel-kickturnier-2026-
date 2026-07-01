@@ -117,7 +117,7 @@ async function login() {
 
         aktualisiereOffeneWetten();
         aktualisiereSonderwetten();
-
+        ladeSpielerOnline(name);
         alert("Willkommen " + name + "!");
 
     } catch (error) {
@@ -1189,6 +1189,34 @@ async function speichereSpielerOnline() {
         );
 
     }
+
+}
+function ladeSpielerOnline(name) {
+
+    db.collection("spieler")
+        .doc(name)
+        .onSnapshot((doc) => {
+
+            if (!doc.exists) return;
+
+            const spieler = doc.data();
+
+            coins = spieler.coins || 1000;
+            offeneWetten = spieler.offeneWetten || [];
+            sonderwetten = spieler.sonderwetten || [];
+            ergebnisse = spieler.ergebnisse || {};
+            ausgezahlteWetten = spieler.ausgezahlteWetten || [];
+
+            coinsAnzeige.innerHTML = "💰 " + coins + " Coins";
+
+            aktualisiereOffeneWetten();
+            aktualisiereSonderwetten();
+
+        }, (error) => {
+
+            alert("❌ Fehler beim Laden des Spielers: " + error.message);
+
+        });
 
 }
 window.onload = function () {
