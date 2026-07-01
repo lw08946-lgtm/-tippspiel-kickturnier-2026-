@@ -1304,7 +1304,6 @@ async function ladeErgebnisseOnline() {
 
 async function speichereSpielerOnline() {
 
-
     if (aktuellerSpieler === "") {
         alert("❌ aktuellerSpieler ist leer");
         return;
@@ -1316,6 +1315,8 @@ async function speichereSpielerOnline() {
             .doc(aktuellerSpieler)
             .set({
 
+                name: aktuellerSpieler,
+
                 coins: coins,
                 offeneWetten: offeneWetten,
                 sonderwetten: sonderwetten,
@@ -1323,7 +1324,6 @@ async function speichereSpielerOnline() {
                 ausgezahlteWetten: ausgezahlteWetten
 
             });
-
 
     } catch (error) {
 
