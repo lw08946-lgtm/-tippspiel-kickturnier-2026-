@@ -1141,7 +1141,7 @@ function ladeQuotenOnline() {
 }
 
 async function speichereSonderwettenOnline() {
-
+alert("🚀 speichereSonderwettenOnline gestartet");
     try {
 
         await db.collection("turnier")
