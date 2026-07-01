@@ -747,22 +747,85 @@ function aktualisiereSonderwetten() {
     }
 
 }
+function sonderwetteAuswaehlen(titel, antwort, quote) {
+
+    wettschein.push({
+
+        spielId: "sonder_" + titel,
+
+        spiel: titel,
+
+        text: antwort,
+
+        quote: quote,
+
+        typ: "sonder"
+
+    });
+
+    const liste = document.getElementById("wettscheinListe");
+
+    liste.innerHTML = "";
+
+    for (let tipp of wettschein) {
+
+        liste.innerHTML +=
+            "<p><strong>" + tipp.spiel + "</strong><br>" +
+            "✔️ " + tipp.text +
+            " (" + tipp.quote.toFixed(2) + ")</p>";
+
+    }
+
+    berechneGewinn();
+
+}
+async function sonderwetteLoeschen(index) {
+
+    if (!confirm("Sonderwette wirklich löschen?")) {
+        return;
+    }
+
+    sonderwetten.splice(index, 1);
+
+    await speichereSonderwettenOnline();
+
+    aktualisiereSonderwetten();
+    aktualisiereAdminSonderwetten();
+
+    alert("✅ Sonderwette gelöscht");
+
+}
 function aktualisiereAdminSonderwetten() {
-alert("Admin-Sonderwetten: " + sonderwetten.length);
+
     const liste = document.getElementById("adminSonderwettenListe");
 
     if (!liste) return;
 
     liste.innerHTML = "";
 
-    for (let wette of sonderwetten) {
+    sonderwetten.forEach((wette, index) => {
 
-        liste.innerHTML += "<p>" + wette.titel + "</p>";
+        liste.innerHTML += `
+            <div class="spiel">
 
-    }
+                <h3>${wette.titel}</h3>
+
+                <button onclick="sonderwetteLoeschen(${index})">
+                    🗑️ Löschen
+                </button>
+
+                <br><br>
+
+                <button onclick="sonderwetteAuswerten(${index})">
+                    ✅ Auswerten
+                </button>
+
+            </div>
+        `;
+
+    });
 
 }
-
 function ladeErgebnisse() {
 
     const liste = document.getElementById("ergebnisseListe");
