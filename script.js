@@ -192,7 +192,6 @@ function spieleAnzeigen() {
 
     spieleListe.innerHTML = "";
 
-    alert("Anzahl Spiele: " + spiele.length);
 
     for (let spiel of spiele) {
 
@@ -1137,3 +1136,27 @@ async function speichereSpielerOnline() {
     }
 
 }
+window.onload = function () {
+
+    zeigeStart();
+
+    ladeTeamsOnline();
+
+    ladeErgebnisseOnline();
+
+    const liste = localStorage.getItem("spielerliste");
+
+    if (liste) {
+        spielerliste = JSON.parse(liste);
+    }
+
+    const letzterSpieler = localStorage.getItem("letzterSpieler");
+
+    if (letzterSpieler) {
+
+        document.getElementById("name").value = letzterSpieler;
+
+    }
+
+};
+
