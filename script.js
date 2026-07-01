@@ -1127,9 +1127,16 @@ async function ladeErgebnisseOnline() {
         });
 
 }
+
+
 async function speichereSpielerOnline() {
 
-    if (aktuellerSpieler === "") return;
+    alert("🚀 speichereSpielerOnline gestartet");
+
+    if (aktuellerSpieler === "") {
+        alert("❌ aktuellerSpieler ist leer");
+        return;
+    }
 
     try {
 
@@ -1145,12 +1152,16 @@ async function speichereSpielerOnline() {
 
             });
 
+        alert("✅ Spieler online gespeichert");
+
     } catch (error) {
 
-        alert("❌ Fehler beim Speichern des Spielers: " + error.message);
+        alert(
+            "❌ Fehler:\n" +
+            error.code + "\n" +
+            error.message
+        );
 
     }
 
 }
-
-
