@@ -749,6 +749,9 @@ function aktualisiereSonderwetten() {
 }
 function sonderwetteAuswaehlen(titel, antwort, quote) {
 
+    // Bereits gewählte Sonderwette ersetzen
+    wettschein = wettschein.filter(tipp => tipp.spielId !== "sonder_" + titel);
+
     wettschein.push({
 
         spielId: "sonder_" + titel,
