@@ -963,7 +963,7 @@ function speichernSpieler() {
     speichereSpielerOnline();
 
 }
-function coinsAufladen() {
+async function coinsAufladen() {
 
     const name = document.getElementById("coinsSpieler").value.trim();
     const euro = Number(document.getElementById("euroBetrag").value);
@@ -978,28 +978,37 @@ function coinsAufladen() {
         return;
     }
 
-    const daten = localStorage.getItem("spieler_" + name);
+    try {
 
-    if (!daten) {
-        alert("Spieler nicht gefunden.");
-        return;
+        const ref = db.collection("spieler").doc(name);
+
+        const doc = await ref.get();
+
+        if (!doc.exists) {
+            alert("Spieler nicht gefunden.");
+            return;
+        }
+
+        const spieler = doc.data();
+
+        const coins = euro * 100;
+
+        spieler.coins += coins;
+
+        await ref.update({
+            coins: spieler.coins
+        });
+
+        alert(
+            "✅ " + name + " hat " +
+            coins + " Coins erhalten."
+        );
+
+    } catch (error) {
+
+        alert("❌ Fehler: " + error.message);
+
     }
-
-    const spieler = JSON.parse(daten);
-
-    const coins = euro * 100;
-
-    spieler.coins += coins;
-
-    localStorage.setItem(
-        "spieler_" + name,
-        JSON.stringify(spieler)
-    );
-
-    alert(
-        "✅ " + name + " hat " +
-        coins + " Coins erhalten."
-    );
 
 }
 function ladeSpielerliste() {
