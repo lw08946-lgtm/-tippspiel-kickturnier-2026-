@@ -225,6 +225,24 @@ function spieleAnzeigen() {
     }
 
 }
+function teamEingabefelderAktualisieren() {
+
+    document.getElementById("team1").value = spiele[0].heim;
+    document.getElementById("team2").value = spiele[0].gast;
+    document.getElementById("team3").value = spiele[1].heim;
+    document.getElementById("team4").value = spiele[1].gast;
+
+    document.getElementById("team5").value = spiele[6].heim;
+    document.getElementById("team6").value = spiele[6].gast;
+    document.getElementById("team7").value = spiele[7].heim;
+    document.getElementById("team8").value = spiele[7].gast;
+
+    document.getElementById("team9").value = spiele[12].heim;
+    document.getElementById("team10").value = spiele[12].gast;
+    document.getElementById("team11").value = spiele[13].heim;
+    document.getElementById("team12").value = spiele[13].gast;
+
+}
 function zeigeCoinsAufladen() {
 
     document.getElementById("startSeite").style.display = "none";
@@ -1035,9 +1053,11 @@ function ladeTeamsOnline() {
 
             spieleAnzeigen();
 
+            teamEingabefelderAktualisieren();
+
         }, (error) => {
 
-            alert("❌ Fehler beim Laden der Teams: " + error);
+            alert("❌ Fehler beim Laden der Teams: " + error.message);
 
         });
 
