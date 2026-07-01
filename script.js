@@ -945,24 +945,28 @@ speichernSpieler();
 }
 function speichernSpieler() {
 
-    if (aktuellerSpieler === "") return;
+    alert("speichernSpieler aufgerufen");
+
+    if (aktuellerSpieler === "") {
+        alert("Kein aktueller Spieler!");
+        return;
+    }
 
     const spieler = {
 
-    coins: coins,
-    offeneWetten: offeneWetten,
-    sonderwetten: sonderwetten,
-    ergebnisse: ergebnisse,
-    ausgezahlteWetten: ausgezahlteWetten
+        coins: coins,
+        offeneWetten: offeneWetten,
+        sonderwetten: sonderwetten,
+        ergebnisse: ergebnisse,
+        ausgezahlteWetten: ausgezahlteWetten
 
-};
-
-
+    };
 
     localStorage.setItem(
         "spieler_" + aktuellerSpieler,
         JSON.stringify(spieler)
     );
+
     speichereSpielerOnline();
 
 }
