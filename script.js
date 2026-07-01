@@ -963,6 +963,7 @@ function speichernSpieler() {
         "spieler_" + aktuellerSpieler,
         JSON.stringify(spieler)
     );
+    speichereSpielerOnline();
 
 }
 function coinsAufladen() {
@@ -1122,4 +1123,30 @@ async function ladeErgebnisseOnline() {
         });
 
 }
+async function speichereSpielerOnline() {
+
+    if (aktuellerSpieler === "") return;
+
+    try {
+
+        await db.collection("spieler")
+            .doc(aktuellerSpieler)
+            .set({
+
+                coins: coins,
+                offeneWetten: offeneWetten,
+                sonderwetten: sonderwetten,
+                ergebnisse: ergebnisse,
+                ausgezahlteWetten: ausgezahlteWetten
+
+            });
+
+    } catch (error) {
+
+        alert("❌ Fehler beim Speichern des Spielers: " + error.message);
+
+    }
+
+}
+
 
