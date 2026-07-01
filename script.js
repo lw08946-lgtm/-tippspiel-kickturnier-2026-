@@ -745,7 +745,7 @@ function aktualisiereSonderwetten() {
 
 }
 function aktualisiereAdminSonderwetten() {
-
+alert("Admin-Sonderwetten: " + sonderwetten.length);
     const liste = document.getElementById("adminSonderwettenListe");
 
     if (!liste) return;
