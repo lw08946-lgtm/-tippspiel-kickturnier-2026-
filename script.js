@@ -914,7 +914,6 @@ speichernSpieler();
 }
 function speichernSpieler() {
 
-    alert("speichernSpieler aufgerufen");
 
     if (aktuellerSpieler === "") {
         alert("Kein aktueller Spieler!");
@@ -1004,11 +1003,9 @@ async function speichereTeamsOnline() {
         await db.collection("turnier")
             .doc("teams")
             .set({
-                test: "Hallo Welt",
                 spiele: spiele
             });
 
-        alert("✅ Teams gespeichert");
 
     } catch (error) {
 
@@ -1062,7 +1059,6 @@ async function speichereErgebnisseOnline() {
 }
 async function speichereQuotenOnline() {
 
-    alert("🚀 speichereQuotenOnline gestartet");
 
     try {
 
@@ -1072,7 +1068,6 @@ async function speichereQuotenOnline() {
                 spiele: spiele
             });
 
-        alert("✅ Quoten wurden online gespeichert!");
 
     } catch (error) {
 
@@ -1102,7 +1097,6 @@ async function ladeErgebnisseOnline() {
 
 async function speichereSpielerOnline() {
 
-    alert("🚀 speichereSpielerOnline gestartet");
 
     if (aktuellerSpieler === "") {
         alert("❌ aktuellerSpieler ist leer");
@@ -1123,7 +1117,6 @@ async function speichereSpielerOnline() {
 
             });
 
-        alert("✅ Spieler online gespeichert");
 
     } catch (error) {
 
