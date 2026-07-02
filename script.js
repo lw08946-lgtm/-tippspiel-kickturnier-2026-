@@ -1360,7 +1360,7 @@ function ladeQuotenOnline() {
 }
 
 async function speichereSonderwettenOnline() {
-alert("🚀 speichereSonderwettenOnline gestartet");
+    
     try {
 
         await db.collection("turnier")
@@ -1380,22 +1380,22 @@ alert("🚀 speichereSonderwettenOnline gestartet");
 }
 function ladeSonderwettenOnline() {
 
-    alert("📥 ladeSonderwettenOnline gestartet");
+
 
     db.collection("turnier")
         .doc("sonderwetten")
         .onSnapshot((doc) => {
 
-            alert("📡 Firestore hat Daten gesendet");
+        
 
             if (!doc.exists) {
-                alert("❌ Dokument sonderwetten existiert nicht");
+            
                 return;
             }
 
             sonderwetten = doc.data().sonderwetten || [];
 
-            alert("✅ Geladene Sonderwetten: " + sonderwetten.length);
+        
 
             aktualisiereSonderwetten();
 
