@@ -819,19 +819,38 @@ function aktualisiereAdminSonderwetten() {
 
         let antworten = "";
 
-        wette.antworten.forEach((antwort) => {
+        if (!wette.ausgewertet) {
 
-            antworten += `
+            wette.antworten.forEach((antwort) => {
 
-            <button onclick="sonderwetteAuswerten(${index}, '${antwort.text}')">
-                ✅ ${antwort.text}
-            </button>
+                antworten += `
 
-            <br><br>
+                <button onclick="sonderwetteAuswerten(${index}, '${antwort.text}')">
+                    ✅ ${antwort.text}
+                </button>
+
+                <br><br>
+
+                `;
+
+            });
+
+        } else {
+
+            antworten = `
+
+                <p style="color:lime;">
+                    ✅ Ausgewertet
+                </p>
+
+                <p>
+                    Richtige Antwort:
+                    <strong>${wette.richtigeAntwort}</strong>
+                </p>
 
             `;
 
-        });
+        }
 
         liste.innerHTML += `
 
