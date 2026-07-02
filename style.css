@@ -27,30 +27,60 @@ body{
     min-height:100vh;
 
 }
-
 header{
-    background:#ffffff;
-    padding:25px;
-    border-bottom:4px solid #0A2342;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
 
-header h1{
+    padding:35px 20px;
+
     text-align:center;
-    color:#0A2342;
-    font-size:34px;
-    margin-bottom:20px;
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
+}
+header h1{
+
+    color:white;
+
+    font-size:58px;
+
+    line-height:1.05;
+
+    letter-spacing:1px;
+
+    margin-bottom:30px;
+
+}
+.spielerbox{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    padding:18px 24px;
+
+    color:white;
+
+    font-size:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.30);
+
 }
 
-.spielerbox{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#eef3fa;
-    padding:15px;
-    border-radius:12px;
-    font-weight:bold;
-}
+
+
 
 nav{
     display:flex;
