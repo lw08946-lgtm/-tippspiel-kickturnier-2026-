@@ -13,8 +13,19 @@
 }
 
 body{
-    background:#f4f6f9;
-    color:#0A2342;
+
+    margin:0;
+    padding:20px;
+
+    background:
+    radial-gradient(circle at top,#203a67 0%,#12203c 35%,#08111f 100%);
+
+    color:#ffffff;
+
+    font-family:Arial,sans-serif;
+
+    min-height:100vh;
+
 }
 
 header{
@@ -59,17 +70,35 @@ main{
 }
 
 .karte{
-    background:#ffffff;
-    border-radius:18px;
-    padding:22px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:28px;
+
     margin-bottom:25px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.35);
+
 }
 
 .karte h2{
-    color:#0A2342;
-    margin-bottom:20px;
-    font-size:26px;
+
+    color:white;
+
+    font-size:34px;
+
+    margin-bottom:28px;
+
+    letter-spacing:1px;
+
 }
 
 input{
