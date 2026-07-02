@@ -88,22 +88,43 @@ input:focus{
     border-color:#2563eb;
 }
 
-button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#0A2342;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.2s;
+button {
+
+    width: 100%;
+    padding: 18px 20px;
+
+    background: #182b4d;
+    color: white;
+
+    border: none;
+    border-radius: 18px;
+
+    font-family: "Nougat", sans-serif;
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.25);
+
+}
+button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.30);
+
 }
 
-button:hover{
-    background:#153d70;
+button:active {
+
+    transform: scale(.98);
+
 }
+
 
 .spiel{
     background:#f8fafc;
