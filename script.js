@@ -1705,84 +1705,71 @@ function zeigeAlleWetten() {
         snapshot.forEach((doc) => {
 
             const spieler = doc.data();
-
-            const offen = geoeffneteSpieler[doc.id] === true;
+            const id = doc.id.replace(/\s/g, "_");
 
             liste.innerHTML += `
 
-                <div class="spiel">
+            <div class="spiel">
 
-                    <h3>${doc.id}</h3>
+                <h3>${doc.id}</h3>
 
-                    <p><strong>Coins:</strong> ${spieler.coins}</p>
+                <p><strong>Coins:</strong> ${spieler.coins}</p>
 
-                    <p><strong>Offene Wettscheine:</strong> ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}</p>
+                <p><strong>Offene Wettscheine:</strong> ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}</p>
 
-                    <button type="button" onclick="spielerEinAusklappen('${doc.id}')">
+                <button type="button" onclick="spielerEinAusklappen('${id}')">
+                    ▼ Anzeigen
+                </button>
 
-                        ${offen ? "▲ Verbergen" : "▼ Anzeigen"}
-
-                    </button>
+                <div id="wetten_${id}" style="display:none; margin-top:15px;">
 
             `;
 
-            if (offen) {
+            if (!spieler.offeneWetten || spieler.offeneWetten.length === 0) {
 
-                if (!spieler.offeneWetten || spieler.offeneWetten.length === 0) {
+                liste.innerHTML += `
+                    <p>Keine offenen Wetten.</p>
+                `;
+
+            } else {
+
+                spieler.offeneWetten.forEach((wette) => {
 
                     liste.innerHTML += `
-                        <p>Keine offenen Wetten.</p>
+
+                    <div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
+
+                        <strong>${wette.status}</strong><br><br>
+
+                        Einsatz: ${wette.einsatz} Coins<br>
+                        Quote: ${Number(wette.quote).toFixed(2)}<br>
+                        Möglicher Gewinn: ${Number(wette.moeglicherGewinn).toFixed(2)} Coins
+
+                        <hr style="margin:10px 0;">
+
                     `;
 
-                } else {
-
-                    spieler.offeneWetten.forEach((wette) => {
+                    wette.tipps.forEach((tipp) => {
 
                         liste.innerHTML += `
-
-                            <div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
-
-                                <strong>${wette.status}</strong><br>
-
-                                Einsatz: ${wette.einsatz} Coins<br>
-
-                                Quote: ${wette.quote.toFixed(2)}<br>
-
-                                Möglicher Gewinn: ${wette.moeglicherGewinn.toFixed(2)} Coins
-
-                                <hr style="margin:10px 0;">
-
-                        `;
-
-                        wette.tipps.forEach((tipp) => {
-
-                            liste.innerHTML += `
-
-                                ${tipp.spiel}<br>
-                                ➜ ${tipp.text}<br><br>
-
-                            `;
-
-                        });
-
-                        liste.innerHTML += `
-
-                            </div>
-
+                            <strong>${tipp.spiel}</strong><br>
+                            ➜ ${tipp.text}<br><br>
                         `;
 
                     });
 
-                }
+                    liste.innerHTML += `
+                    </div>
+                    `;
+
+                });
 
             }
 
             liste.innerHTML += `
-
                 </div>
-
-                <br>
-
+            </div>
+            <br>
             `;
 
         });
@@ -1790,13 +1777,13 @@ function zeigeAlleWetten() {
     });
 
 }
-function spielerEinAusklappen(name){
+function spielerEinAusklappen(id){
 
-    const div = document.getElementById("wetten_" + name);
+    const div = document.getElementById("wetten_" + id);
 
-    if (!div) return;
+    if(!div) return;
 
-    if (div.style.display === "none"){
+    if(div.style.display === "none"){
 
         div.style.display = "block";
 
@@ -1807,3 +1794,4 @@ function spielerEinAusklappen(name){
     }
 
 }
+
