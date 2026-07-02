@@ -132,12 +132,15 @@ Wette platzieren
 
 <h2>⚙️ Adminbereich</h2>
 
-<p>Hier kannst du später das komplette Turnier verwalten.</p>
-<button type="button" onclick="teamsEinAusklappen()">
+<p>Hier kannst du das komplette Turnier verwalten.</p>
 
+<hr>
+
+<h3>👥 Teams</h3>
+
+<button type="button" onclick="teamsEinAusklappen()">
     👥 Teams bearbeiten
     <span id="teamsPfeil">▼</span>
-
 </button>
 
 <br><br>
@@ -165,58 +168,24 @@ Wette platzieren
 <input id="team11" placeholder="Team C3"><br><br>
 <input id="team12" placeholder="Team C4"><br><br>
 
- </div>   
-    
 <button onclick="teamsSpeichern()">
 💾 Teams speichern
 </button>
 
-<hr>
-<button id="teamsButton">
-👥 Teams bearbeiten
-</button>
+</div>
 
-<br><br>
+<hr>
+
+<h3>⚽ Turnier</h3>
 
 <button onclick="zeigeQuoten()">
 📈 Quoten bearbeiten
-</button>
-<button onclick="zeigeCoinsAufladen()">
-    💰 Coins aufladen
-</button>
-
-<br><br>
-
-<p><strong>Startcoins für alle Spieler:</strong></p>
-
-<input
-    type="number"
-    id="startCoins"
-    value="1000"
-    min="1">
-
-<br><br>
-
-<button onclick="alleCoinsZuruecksetzen()">
-    💰 Allen Spielern Startcoins geben
-</button>
-
-<br><br>
-
-<button onclick="zeigeSpielerliste()">
-    👥 Spielerliste
-</button>
-
-<br><br>
-
-<button onclick="zeigeAlleWetten()">
-    Alle Wetten
 </button>
 
 <br><br>
 
 <button onclick="zeigeErgebnisse()">
-    ⚽ Ergebnisse eintragen
+⚽ Ergebnisse eintragen
 </button>
 
 <br><br>
@@ -224,7 +193,45 @@ Wette platzieren
 <button onclick="zeigeNeuesSpiel()">
 ➕ Neues Spiel hinzufügen
 </button>
+
+<hr>
+
+<h3>👥 Spieler</h3>
+
+<button onclick="zeigeCoinsAufladen()">
+💰 Coins aufladen
+</button>
+
 <br><br>
+
+<p><strong>Startcoins für alle Spieler</strong></p>
+
+<input
+type="number"
+id="startCoins"
+value="1000"
+min="1">
+
+<br><br>
+
+<button onclick="alleCoinsZuruecksetzen()">
+💰 Allen Spielern Startcoins geben
+</button>
+
+<br><br>
+
+<button onclick="zeigeSpielerliste()">
+👥 Spielerliste
+</button>
+
+<br><br>
+
+<button onclick="zeigeAlleWetten()">
+📋 Alle Wetten
+</button>
+
+<hr>
+<h3>🏆 Sonderwetten</h3>
 
 <button onclick="zeigeNeueSonderwette()">
 🎉 Sonderwette hinzufügen
@@ -232,57 +239,75 @@ Wette platzieren
 
 <br><br>
 
+<button onclick="zeigeAdminSonderwetten()">
+🏆 Sonderwetten verwalten
+</button>
+
+<hr>
+
+<h3>⚙️ System</h3>
+
 <button id="resetButton">
 🔄 Turnier zurücksetzen
 </button>
 
 </section>
-    <section class="karte" id="neuesSpielSeite" style="display:none;">
+
+<!-- Neues Spiel -->
+
+<section class="karte" id="neuesSpielSeite" style="display:none;">
 
 <h2>➕ Neues Spiel</h2>
 
-<select id="phase">
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
 
+<br><br>
+
+<select id="phase">
 <option>Gruppenphase</option>
 <option>Viertelfinale</option>
 <option>Halbfinale</option>
 <option>Finale</option>
-
 </select>
 
 <br><br>
 
 <input id="heimTeam" placeholder="Heimteam">
-
 <input id="gastTeam" placeholder="Gastteam">
 
 <input id="quote1" type="number" step="0.01" placeholder="Quote Heim">
-
 <input id="quoteX" type="number" step="0.01" placeholder="Quote X">
-
 <input id="quote2" type="number" step="0.01" placeholder="Quote Gast">
 
 <button onclick="spielHinzufuegen()">
-
-Spiel hinzufügen
-
+➕ Spiel hinzufügen
 </button>
-</section>        
-<section class="karte" id="sonderwettenSeite" style="display:none;">
-
-    <h2>🎉 Sonderwetten</h2>
-
-    <div id="sonderwettenListe">
-
-        <p>Noch keine Sonderwetten vorhanden.</p>
-
-    </div>
 
 </section>
+
+<!-- Sonderwetten -->
+
+<section class="karte" id="sonderwettenSeite" style="display:none;">
+
+<h2>🎉 Sonderwetten</h2>
+
+<div id="sonderwettenListe"></div>
+
+</section>
+
+<!-- Neue Sonderwette -->
 
 <section class="karte" id="neueSonderwetteSeite" style="display:none;">
 
 <h2>🎉 Neue Sonderwette</h2>
+
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
+
+<br><br>
 
 <input id="sonderTitel" placeholder="Titel der Sonderwette">
 
@@ -303,66 +328,99 @@ Spiel hinzufügen
 </button>
 
 </section>
-    
+
+<!-- Alle Wetten -->
+
 <section class="karte" id="alleWettenSeite" style="display:none;">
 
-    <h2>Alle Wetten</h2>
+<h2>📋 Alle Wetten</h2>
 
-    <div id="alleWettenListe"></div>
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
 
-    <br>
+<br><br>
 
-    <button onclick="zeigeAdmin()">
-        Zurück
-    </button>
-
+<div id="alleWettenListe"></div>
 
 </section>
+
+<!-- Ergebnisse -->
+
 <section class="karte" id="ergebnisseSeite" style="display:none;">
 
-    <h2>⚽ Ergebnisse eintragen</h2>
+<h2>⚽ Ergebnisse eintragen</h2>
 
-    <div id="ergebnisseListe"></div>
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
 
+<br><br>
 
-</section>
-   <section class="karte" id="quotenSeite" style="display:none;">
-
-    <h2>📈 Quoten bearbeiten</h2>
-
-    <div id="quotenListe"></div>
-
-</section> 
-
-    <section class="karte" id="adminSonderwettenSeite">
-
-    <h2>🏆 Sonderwetten verwalten</h2>
-
-    <div id="adminSonderwettenListe"></div>
+<div id="ergebnisseListe"></div>
 
 </section>
-    
-   <section class="karte" id="coinsSeite" style="display:none;">
 
-    <h2>💰 Coins aufladen</h2>
+<!-- Quoten -->
 
-    <select id="coinsSpieler">
-</select>
+<section class="karte" id="quotenSeite" style="display:none;">
 
-    <br><br>
+<h2>📈 Quoten bearbeiten</h2>
 
-    <input
-        id="euroBetrag"
-        type="number"
-        placeholder="Euro">
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
 
-    <br><br>
+<br><br>
 
-    <button onclick="coinsAufladen()">
-        💰 Coins gutschreiben
-    </button>
+<div id="quotenListe"></div>
 
-</section> 
+</section>
+
+<!-- Sonderwetten verwalten -->
+
+<section class="karte" id="adminSonderwettenSeite" style="display:none;">
+
+<h2>🏆 Sonderwetten verwalten</h2>
+
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
+
+<br><br>
+
+<div id="adminSonderwettenListe"></div>
+
+</section>
+
+<!-- Coins -->
+
+<section class="karte" id="coinsSeite" style="display:none;">
+
+<h2>💰 Coins aufladen</h2>
+
+<button onclick="zeigeAdmin()">
+← Zurück zum Adminbereich
+</button>
+
+<br><br>
+
+<select id="coinsSpieler"></select>
+
+<br><br>
+
+<input
+id="euroBetrag"
+type="number"
+placeholder="Euro">
+
+<br><br>
+
+<button onclick="coinsAufladen()">
+💰 Coins gutschreiben
+</button>
+
+</section>
 
 </main>
 <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
