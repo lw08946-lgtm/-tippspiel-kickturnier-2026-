@@ -421,7 +421,7 @@ function zeigeAdmin() {
     document.getElementById("neueSonderwetteSeite").style.display = "none";
     document.getElementById("ergebnisseSeite").style.display = "none";
     document.getElementById("quotenSeite").style.display = "none";
-    document.getElementById("adminSonderwettenSeite").style.display = "block";
+    document.getElementById("adminSonderwettenSeite").style.display = "none";
     document.getElementById("spielerListeSeite").style.display = "none";
     document.getElementById("alleWettenSeite").style.display = "none";
 
