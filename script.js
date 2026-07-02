@@ -26,6 +26,7 @@ let aktuellerSpieler = "";
 let ausgezahlteWetten = [];
 let spielerliste = [];
 let geoeffneteSpieler = {};
+let teamsGeoeffnet = false;
 
 let spiele = [
 
@@ -1798,3 +1799,15 @@ function spielerEinAusklappen(id){
     }
 
 }
+function teamsEinAusklappen() {
+
+    teamsGeoeffnet = !teamsGeoeffnet;
+
+    document.getElementById("teamsInhalt").style.display =
+        teamsGeoeffnet ? "block" : "none";
+
+    document.getElementById("teamsPfeil").innerHTML =
+        teamsGeoeffnet ? "▲" : "▼";
+
+}
+
