@@ -282,5 +282,14 @@ button {
     font-family: "Nougat", sans-serif;
 
 }
+.sonderwette,
+.sonderwetten,
+.sonderwetten .karte,
+.sonderwetten div {
 
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+}
 
