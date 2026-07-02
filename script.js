@@ -1349,7 +1349,6 @@ async function speichereSpielerOnline() {
 
                 coins: coins,
                 offeneWetten: offeneWetten,
-                sonderwetten: sonderwetten,
                 ergebnisse: ergebnisse,
                 ausgezahlteWetten: ausgezahlteWetten
 
