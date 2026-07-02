@@ -859,16 +859,90 @@ async function sonderwetteAuswerten(index, richtigeAntwort) {
     if (!confirm("Soll '" + richtigeAntwort + "' als richtige Antwort gewertet werden?")) {
         return;
     }
-    await ladeAlleSpieler();
 
     sonderwetten[index].richtigeAntwort = richtigeAntwort;
     sonderwetten[index].ausgewertet = true;
 
     await speichereSonderwettenOnline();
 
+    const snapshot = await db.collection("spieler").get();
+
+    for (const doc of snapshot.docs) {
+
+        const spieler = doc.data();
+
+        if (!spieler.offeneWetten) continue;
+
+        if (!spieler.ausgezahlteWetten)
+            spieler.ausgezahlteWetten = [];
+
+        let geaendert = false;
+
+        for (let wette of spieler.offeneWetten) {
+
+            let gewonnen = true;
+            let sonderGefunden = false;
+
+            for (let tipp of wette.tipps) {
+
+                if (tipp.typ !== "sonder")
+                    continue;
+
+                if (tipp.spiel !== sonderwetten[index].titel)
+                    continue;
+
+                sonderGefunden = true;
+
+                if (tipp.text !== richtigeAntwort) {
+
+                    gewonnen = false;
+
+                }
+
+            }
+
+            if (!sonderGefunden)
+                continue;
+
+            if (spieler.ausgezahlteWetten.includes(wette.id))
+                continue;
+
+            if (gewonnen) {
+
+                wette.status = "🟢 Gewonnen";
+                spieler.coins += wette.moeglicherGewinn;
+
+            } else {
+
+                wette.status = "🔴 Verloren";
+
+            }
+
+            spieler.ausgezahlteWetten.push(wette.id);
+
+            geaendert = true;
+
+        }
+
+        if (geaendert) {
+
+            await db.collection("spieler")
+                .doc(doc.id)
+                .update({
+
+                    coins: spieler.coins,
+                    offeneWetten: spieler.offeneWetten,
+                    ausgezahlteWetten: spieler.ausgezahlteWetten
+
+                });
+
+        }
+
+    }
+
     aktualisiereAdminSonderwetten();
 
-    alert("✅ Sonderwette wurde ausgewertet.");
+    alert("✅ Sonderwette ausgewertet.");
 
 }
 function ladeErgebnisse() {
