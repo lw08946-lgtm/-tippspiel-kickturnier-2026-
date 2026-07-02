@@ -28,6 +28,7 @@ let spielerliste = [];
 let geoeffneteSpieler = {};
 let teamsGeoeffnet = false;
 let adminAngemeldet = false;
+let historie = [];
 
 let spiele = [
 
@@ -100,6 +101,7 @@ async function login() {
             // Sonderwetten werden jetzt global aus Firestore geladen
             ergebnisse = spieler.ergebnisse || {};
             ausgezahlteWetten = spieler.ausgezahlteWetten || [];
+            historie = spieler.historie || [];
 
         } else {
 
@@ -108,6 +110,7 @@ async function login() {
             sonderwetten = [];
             ergebnisse = {};
             ausgezahlteWetten = [];
+            historie = [];
 
             await speichereSpielerOnline();
 
@@ -1268,9 +1271,30 @@ async function coinsAufladen() {
 
         spieler.coins += coins;
 
-        await ref.update({
-            coins: spieler.coins
-        });
+        if (!spieler.historie) {
+    spieler.historie = [];
+}
+
+spieler.historie.unshift({
+
+    art: "💰 Einzahlung",
+
+    text: "+" + coins + " Coins (" + euro + " €)",
+
+    zeit: new Date().toLocaleString("de-DE")
+
+});
+
+if (spieler.historie.length > 100) {
+    spieler.historie.pop();
+}
+
+await ref.update({
+
+    coins: spieler.coins,
+    historie: spieler.historie
+
+});
 
         alert(
             "✅ " + name + " hat " +
@@ -1491,14 +1515,15 @@ async function speichereSpielerOnline() {
             .doc(aktuellerSpieler)
             .set({
 
-                name: aktuellerSpieler,
+    name: aktuellerSpieler,
 
-                coins: coins,
-                offeneWetten: offeneWetten,
-                ergebnisse: ergebnisse,
-                ausgezahlteWetten: ausgezahlteWetten
+    coins: coins,
+    offeneWetten: offeneWetten,
+    ergebnisse: ergebnisse,
+    ausgezahlteWetten: ausgezahlteWetten,
+    historie: historie
 
-            });
+});
 
     } catch (error) {
 
@@ -1852,5 +1877,23 @@ function spielerEinAusklappenAdmin() {
         spielerGeoeffnet ? "▲" : "▼";
 
 }
+async function historieHinzufuegen(art, text) {
+
+    historie.unshift({
+
+        art: art,
+        text: text,
+        zeit: new Date().toLocaleString("de-DE")
+
+    });
+
+    if (historie.length > 100) {
+        historie.pop();
+    }
+
+    await speichereSpielerOnline();
+
+}
+
 
 
