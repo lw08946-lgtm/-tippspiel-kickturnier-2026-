@@ -226,18 +226,35 @@ button:active {
 
 
 .spiel{
-    background:#f8fafc;
-    border:2px solid #e5e7eb;
-    border-radius:16px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
     padding:22px;
+
     margin-bottom:22px;
+
+    color:white;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
 }
 
 .spiel strong{
+
     display:block;
+
     text-align:center;
+
     font-size:22px;
-    color:#0A2342;
+
+    color:white;
+
 }
 
 .quoten{
