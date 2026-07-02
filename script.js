@@ -1839,4 +1839,18 @@ function teamsEinAusklappen() {
         teamsGeoeffnet ? "▲" : "▼";
 
 }
+let spielerGeoeffnet = false;
+
+function spielerEinAusklappenAdmin() {
+
+    spielerGeoeffnet = !spielerGeoeffnet;
+
+    document.getElementById("spielerInhalt").style.display =
+        spielerGeoeffnet ? "block" : "none";
+
+    document.getElementById("spielerPfeil").innerHTML =
+        spielerGeoeffnet ? "▲" : "▼";
+
+}
+
 
