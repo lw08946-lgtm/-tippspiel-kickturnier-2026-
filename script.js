@@ -132,6 +132,16 @@ async function login() {
 }
 function wetteAuswaehlen(spielId, spiel, text, ergebnis, quote, button) {
 
+    const aktuellesSpiel = spiele.find(s => s.id === spielId);
+
+    if (aktuellesSpiel.gesperrt) {
+
+        alert("⛔ Die Wettannahme für dieses Spiel ist geschlossen.");
+
+        return;
+
+    }
+
     if (aktiveButtons[spielId]) {
         aktiveButtons[spielId].style.background = "#0A2342";
     }
@@ -165,7 +175,6 @@ function wetteAuswaehlen(spielId, spiel, text, ergebnis, quote, button) {
     berechneGewinn();
 
 }
-
 function berechneGewinn() {
 
     let gesamtquote = 1;
