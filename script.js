@@ -29,6 +29,7 @@ let geoeffneteSpieler = {};
 let teamsGeoeffnet = false;
 let adminAngemeldet = false;
 let historie = [];
+let geoeffneteHistorie = {};
 
 let spiele = [
 
@@ -1672,6 +1673,47 @@ function zeigeSpielerliste() {
 
     <br><br>
 
+    <button onclick="historieEinAusklappen('${doc.id}')">
+
+    ${geoeffneteHistorie[doc.id] ? "▲ Historie verbergen" : "▼ Historie anzeigen"}
+
+</button>
+
+<br><br>
+
+${geoeffneteHistorie[doc.id] ? `
+
+<div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
+
+${
+    spieler.historie && spieler.historie.length > 0
+
+    ?
+
+    spieler.historie.map(e => `
+
+        <div style="margin-bottom:15px;">
+
+            <strong>${e.art}</strong><br>
+
+            ${e.text}<br>
+
+            <small>${e.zeit}</small>
+
+        </div>
+
+    `).join("")
+
+    :
+
+    "Noch keine Einträge vorhanden."
+
+}
+
+</div>
+
+` : ""}
+
     <button onclick="spielerLoeschen('${doc.id}')">
         🗑️ Spieler löschen
     </button>
@@ -1894,6 +1936,14 @@ async function historieHinzufuegen(art, text) {
     await speichereSpielerOnline();
 
 }
+function historieEinAusklappen(name){
+
+    geoeffneteHistorie[name] = !geoeffneteHistorie[name];
+
+    zeigeSpielerliste();
+
+}
+
 
 
 
