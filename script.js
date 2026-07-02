@@ -29,28 +29,28 @@ let spielerliste = [];
 let spiele = [
 
     // Gruppe A
-    {id:1, heim:"Team 1", gast:"Team 2", q1:2.10, qx:3.50, q2:2.80},
-    {id:2, heim:"Team 3", gast:"Team 4", q1:2.05, qx:3.40, q2:2.90},
-    {id:3, heim:"Team 1", gast:"Team 3", q1:2.20, qx:3.30, q2:2.70},
-    {id:4, heim:"Team 2", gast:"Team 4", q1:2.15, qx:3.45, q2:2.75},
-    {id:5, heim:"Team 1", gast:"Team 4", q1:1.95, qx:3.60, q2:3.10},
-    {id:6, heim:"Team 2", gast:"Team 3", q1:2.30, qx:3.25, q2:2.60},
+    {id:1, heim:"Team 1", gast:"Team 2", q1:2.10, qx:3.50, q2:2.80, gesperrt:false},
+    {id:2, heim:"Team 3", gast:"Team 4", q1:2.05, qx:3.40, q2:2.90, gesperrt:false},
+    {id:3, heim:"Team 1", gast:"Team 3", q1:2.20, qx:3.30, q2:2.70, gesperrt:false},
+    {id:4, heim:"Team 2", gast:"Team 4", q1:2.15, qx:3.45, q2:2.75, gesperrt:false},
+    {id:5, heim:"Team 1", gast:"Team 4", q1:1.95, qx:3.60, q2:3.10, gesperrt:false},
+    {id:6, heim:"Team 2", gast:"Team 3", q1:2.30, qx:3.25, q2:2.60, gesperrt:false},
 
     // Gruppe B
-    {id:7, heim:"Team 5", gast:"Team 6", q1:2.10, qx:3.50, q2:2.80},
-    {id:8, heim:"Team 7", gast:"Team 8", q1:2.05, qx:3.40, q2:2.90},
-    {id:9, heim:"Team 5", gast:"Team 7", q1:2.20, qx:3.30, q2:2.70},
-    {id:10, heim:"Team 6", gast:"Team 8", q1:2.15, qx:3.45, q2:2.75},
-    {id:11, heim:"Team 5", gast:"Team 8", q1:1.95, qx:3.60, q2:3.10},
-    {id:12, heim:"Team 6", gast:"Team 7", q1:2.30, qx:3.25, q2:2.60},
+    {id:7, heim:"Team 5", gast:"Team 6", q1:2.10, qx:3.50, q2:2.80, gesperrt:false},
+    {id:8, heim:"Team 7", gast:"Team 8", q1:2.05, qx:3.40, q2:2.90, gesperrt:false},
+    {id:9, heim:"Team 5", gast:"Team 7", q1:2.20, qx:3.30, q2:2.70, gesperrt:false},
+    {id:10, heim:"Team 6", gast:"Team 8", q1:2.15, qx:3.45, q2:2.75, gesperrt:false},
+    {id:11, heim:"Team 5", gast:"Team 8", q1:1.95, qx:3.60, q2:3.10, gesperrt:false},
+    {id:12, heim:"Team 6", gast:"Team 7", q1:2.30, qx:3.25, q2:2.60, gesperrt:false},
 
     // Gruppe C
-    {id:13, heim:"Team 9", gast:"Team 10", q1:2.10, qx:3.50, q2:2.80},
-    {id:14, heim:"Team 11", gast:"Team 12", q1:2.05, qx:3.40, q2:2.90},
-    {id:15, heim:"Team 9", gast:"Team 11", q1:2.20, qx:3.30, q2:2.70},
-    {id:16, heim:"Team 10", gast:"Team 12", q1:2.15, qx:3.45, q2:2.75},
-    {id:17, heim:"Team 9", gast:"Team 12", q1:1.95, qx:3.60, q2:3.10},
-    {id:18, heim:"Team 10", gast:"Team 11", q1:2.30, qx:3.25, q2:2.60}
+    {id:13, heim:"Team 9", gast:"Team 10", q1:2.10, qx:3.50, q2:2.80, gesperrt:false},
+    {id:14, heim:"Team 11", gast:"Team 12", q1:2.05, qx:3.40, q2:2.90, gesperrt:false},
+    {id:15, heim:"Team 9", gast:"Team 11", q1:2.20, qx:3.30, q2:2.70, gesperrt:false},
+    {id:16, heim:"Team 10", gast:"Team 12", q1:2.15, qx:3.45, q2:2.75, gesperrt:false},
+    {id:17, heim:"Team 9", gast:"Team 12", q1:1.95, qx:3.60, q2:3.10, gesperrt:false},
+    {id:18, heim:"Team 10", gast:"Team 11", q1:2.30, qx:3.25, q2:2.60, gesperrt:false}
 
 ];
 
