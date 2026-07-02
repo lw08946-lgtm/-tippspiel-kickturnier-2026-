@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "Nougat";
+    src: url("Nougat-ExtraBlack.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 *{
     margin:0;
     padding:0;
@@ -147,3 +154,13 @@ hr{
     background:#d8dee9;
     margin:25px 0;
 }
+h1,
+h2,
+h3,
+button {
+
+    font-family: "Nougat", sans-serif;
+
+}
+
+
