@@ -1673,6 +1673,7 @@ window.onload = function () {
     }
 
 };
+
 let alleWettenListener = null;
 
 function zeigeAlleWetten() {
@@ -1700,15 +1701,14 @@ function zeigeAlleWetten() {
 
     alleWettenListener = db.collection("spieler").onSnapshot((snapshot) => {
 
-        liste.innerHTML = "";
+        let html = "";
 
         snapshot.forEach((doc) => {
 
             const spieler = doc.data();
             const id = doc.id.replace(/\s/g, "_");
 
-            liste.innerHTML += `
-
+            html += `
             <div class="spiel">
 
                 <h3>${doc.id}</h3>
@@ -1721,67 +1721,71 @@ function zeigeAlleWetten() {
                     ▼ Anzeigen
                 </button>
 
-                <div id="wetten_${id}" style="display:none; margin-top:15px;">
-
+                <div id="wetten_${id}" style="display:none;margin-top:15px;">
             `;
 
             if (!spieler.offeneWetten || spieler.offeneWetten.length === 0) {
 
-                liste.innerHTML += `
-                    <p>Keine offenen Wetten.</p>
-                `;
+                html += `<p>Keine offenen Wetten.</p>`;
 
             } else {
 
                 spieler.offeneWetten.forEach((wette) => {
 
-                    liste.innerHTML += `
+                    html += `
 
-                    <div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
+                    <div class="spiel" style="margin-top:15px;">
 
                         <strong>${wette.status}</strong><br><br>
 
                         Einsatz: ${wette.einsatz} Coins<br>
                         Quote: ${Number(wette.quote).toFixed(2)}<br>
-                        Möglicher Gewinn: ${Number(wette.moeglicherGewinn).toFixed(2)} Coins
+                        Gewinn: ${Number(wette.moeglicherGewinn).toFixed(2)} Coins
 
-                        <hr style="margin:10px 0;">
-
+                        <hr>
                     `;
 
                     wette.tipps.forEach((tipp) => {
 
-                        liste.innerHTML += `
-                            <strong>${tipp.spiel}</strong><br>
-                            ➜ ${tipp.text}<br><br>
+                        html += `
+
+                            <div style="margin-bottom:12px;">
+
+                                <strong>${tipp.spiel}</strong><br>
+
+                                Tipp: ${tipp.text}
+
+                            </div>
+
                         `;
 
                     });
 
-                    liste.innerHTML += `
-                    </div>
-                    `;
+                    html += `</div>`;
 
                 });
 
             }
 
-            liste.innerHTML += `
+            html += `
+
                 </div>
+
             </div>
-            <br>
+
             `;
 
         });
 
+        liste.innerHTML = html;
+
     });
 
 }
+
 function spielerEinAusklappen(id){
 
     const div = document.getElementById("wetten_" + id);
-
-    if(!div) return;
 
     if(div.style.display === "none"){
 
@@ -1794,4 +1798,3 @@ function spielerEinAusklappen(id){
     }
 
 }
-
