@@ -83,18 +83,44 @@ header h1{
 
 
 nav{
-    display:flex;
-    gap:12px;
-    overflow-x:auto;
-    padding:15px;
-    background:#ffffff;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    padding:0;
+
+    margin:30px 0;
+
+    background:transparent;
+
+    box-shadow:none;
+
 }
 
 nav button{
-    min-width:120px;
-}
 
+    min-width:0;
+
+    height:120px;
+
+    padding:20px;
+
+    border-radius:26px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.30);
+
+    font-size:24px;
+
+}
 main{
     padding:20px;
 }
