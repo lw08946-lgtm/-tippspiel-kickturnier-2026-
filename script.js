@@ -25,6 +25,7 @@ let ergebnisse = {};
 let aktuellerSpieler = "";
 let ausgezahlteWetten = [];
 let spielerliste = [];
+let geoeffneteSpieler = {};
 
 let spiele = [
 
@@ -1672,4 +1673,129 @@ window.onload = function () {
     }
 
 };
+let alleWettenListener = null;
+
+function zeigeAlleWetten() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "none";
+    document.getElementById("meineWettenSeite").style.display = "none";
+    document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
+    document.getElementById("neueSonderwetteSeite").style.display = "none";
+    document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
+    document.getElementById("coinsSeite").style.display = "none";
+    document.getElementById("adminSonderwettenSeite").style.display = "none";
+    document.getElementById("spielerListeSeite").style.display = "none";
+    document.getElementById("alleWettenSeite").style.display = "block";
+
+    const liste = document.getElementById("alleWettenListe");
+
+    if (alleWettenListener) {
+        alleWettenListener();
+    }
+
+    alleWettenListener = db.collection("spieler").onSnapshot((snapshot) => {
+
+        liste.innerHTML = "";
+
+        snapshot.forEach((doc) => {
+
+            const spieler = doc.data();
+
+            const offen = geoeffneteSpieler[doc.id] === true;
+
+            liste.innerHTML += `
+
+            <div class="spiel">
+
+                <h3>${doc.id}</h3>
+
+                <p><strong>Coins:</strong> ${spieler.coins}</p>
+
+                <p><strong>Offene Wettscheine:</strong>
+                ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}</p>
+
+                <button onclick="spielerEinAusklappen('${doc.id}')">
+
+                    ${offen ? "▲ Verbergen" : "▼ Anzeigen"}
+
+                </button>
+
+            `;
+
+            if (offen) {
+
+                if (!spieler.offeneWetten || spieler.offeneWetten.length === 0) {
+
+                    liste.innerHTML += `
+                        <p>Keine offenen Wetten.</p>
+                    `;
+
+                } else {
+
+                    spieler.offeneWetten.forEach((wette) => {
+
+                        liste.innerHTML += `
+
+                        <div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
+
+                            <strong>${wette.status}</strong><br>
+
+                            Einsatz: ${wette.einsatz} Coins<br>
+
+                            Quote: ${wette.quote.toFixed(2)}<br>
+
+                            Möglicher Gewinn: ${wette.moeglicherGewinn.toFixed(2)} Coins
+
+                            <hr style="margin:10px 0;">
+
+                        `;
+
+                        wette.tipps.forEach((tipp) => {
+
+                            liste.innerHTML += `
+
+                                ${tipp.spiel}<br>
+                                ➜ ${tipp.text}<br><br>
+
+                            `;
+
+                        });
+
+                        liste.innerHTML += `
+
+                        </div>
+
+                        `;
+
+                    });
+
+                }
+
+            }
+
+            liste.innerHTML += `
+
+            </div>
+
+            <br>
+
+            `;
+
+        });
+
+    });
+
+}
+
+function spielerEinAusklappen(name){
+    geoeffneteSpieler[name] = !geoeffneteSpieler[name];
+    zeigeAlleWetten();
+}
+
+
 
