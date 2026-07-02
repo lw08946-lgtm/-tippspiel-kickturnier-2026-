@@ -1509,6 +1509,43 @@ function ladeSpielerOnline(name) {
         });
 
 }
+async function alleCoinsZuruecksetzen() {
+
+    const startCoins = Number(
+        document.getElementById("startCoins").value
+    );
+
+    if (!startCoins || startCoins <= 0) {
+
+        alert("Bitte gültige Startcoins eingeben.");
+        return;
+
+    }
+
+    if (!confirm("Wirklich allen Spielern " + startCoins + " Coins geben?")) {
+        return;
+    }
+
+    const snapshot = await db.collection("spieler").get();
+
+    for (const doc of snapshot.docs) {
+
+        await db.collection("spieler")
+            .doc(doc.id)
+            .update({
+
+                coins: startCoins,
+                offeneWetten: [],
+                ausgezahlteWetten: [],
+                ergebnisse: {}
+
+            });
+
+    }
+
+    alert("✅ Alle Spieler wurden zurückgesetzt und haben jetzt " + startCoins + " Coins.");
+
+}
 window.onload = function () {
 
     zeigeStart();
