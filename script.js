@@ -1787,15 +1787,12 @@ function zeigeAlleWetten() {
             `;
 
         });
-
-    });
-
 }
-
 function spielerEinAusklappen(name){
     geoeffneteSpieler[name] = !geoeffneteSpieler[name];
     zeigeAlleWetten();
 }
+
 
 
 
