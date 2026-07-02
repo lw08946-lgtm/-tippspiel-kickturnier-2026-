@@ -1790,12 +1790,20 @@ function zeigeAlleWetten() {
     });
 
 }
-
 function spielerEinAusklappen(name){
 
-    geoeffneteSpieler[name] = !geoeffneteSpieler[name];
+    const div = document.getElementById("wetten_" + name);
 
-    zeigeAlleWetten();
+    if (!div) return;
+
+    if (div.style.display === "none"){
+
+        div.style.display = "block";
+
+    }else{
+
+        div.style.display = "none";
+
+    }
 
 }
-
