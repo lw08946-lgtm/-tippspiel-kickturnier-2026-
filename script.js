@@ -236,6 +236,28 @@ function spieleAnzeigen() {
     }
 
 }
+function zeigeAdminSonderwetten() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "none";
+    document.getElementById("meineWettenSeite").style.display = "none";
+    document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
+    document.getElementById("neueSonderwetteSeite").style.display = "none";
+    document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
+    document.getElementById("coinsSeite").style.display = "none";
+    document.getElementById("spielerListeSeite").style.display = "none";
+    document.getElementById("alleWettenSeite").style.display = "none";
+
+    document.getElementById("adminSonderwettenSeite").style.display = "block";
+
+    aktualisiereAdminSonderwetten();
+}
+
+
 function teamEingabefelderAktualisieren() {
 
     document.getElementById("team1").value = spiele[0].heim;
