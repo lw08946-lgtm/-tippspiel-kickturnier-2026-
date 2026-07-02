@@ -140,18 +140,32 @@ Wette platzieren
 <button onclick="zeigeQuoten()">
 📈 Quoten bearbeiten
 </button>
-
-    <button onclick="zeigeCoinsAufladen()">
+<button onclick="zeigeCoinsAufladen()">
     💰 Coins aufladen
 </button>
 
 <br><br>
-    
+
+<p><strong>Startcoins für alle Spieler:</strong></p>
+
+<input
+    type="number"
+    id="startCoins"
+    value="1000"
+    min="1">
+
+<br><br>
+
+<button onclick="alleCoinsZuruecksetzen()">
+    💰 Allen Spielern Startcoins geben
+</button>
+
 <br><br>
 
 <button onclick="zeigeErgebnisse()">
-⚽ Ergebnisse eintragen
+    ⚽ Ergebnisse eintragen
 </button>
+
 <br><br>
 
 <button onclick="zeigeNeuesSpiel()">
