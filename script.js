@@ -1546,6 +1546,63 @@ async function alleCoinsZuruecksetzen() {
     alert("✅ Alle Spieler wurden zurückgesetzt und haben jetzt " + startCoins + " Coins.");
 
 }
+let spielerListener = null;
+
+function zeigeSpielerliste() {
+
+    document.getElementById("startSeite").style.display = "none";
+    document.getElementById("spieleSeite").style.display = "none";
+    document.getElementById("wettscheinSeite").style.display = "none";
+    document.getElementById("adminSeite").style.display = "none";
+    document.getElementById("meineWettenSeite").style.display = "none";
+    document.getElementById("neuesSpielSeite").style.display = "none";
+    document.getElementById("sonderwettenSeite").style.display = "none";
+    document.getElementById("neueSonderwetteSeite").style.display = "none";
+    document.getElementById("ergebnisseSeite").style.display = "none";
+    document.getElementById("quotenSeite").style.display = "none";
+    document.getElementById("coinsSeite").style.display = "none";
+    document.getElementById("adminSonderwettenSeite").style.display = "none";
+    document.getElementById("spielerListeSeite").style.display = "block";
+
+    const liste = document.getElementById("spielerListe");
+
+    if (spielerListener) {
+        spielerListener();
+    }
+
+    spielerListener = db.collection("spieler").onSnapshot((snapshot) => {
+
+        liste.innerHTML = "";
+
+        snapshot.forEach((doc) => {
+
+            const spieler = doc.data();
+
+            liste.innerHTML += `
+
+            <div class="spiel">
+
+                <h3>👤 ${doc.id}</h3>
+
+                💰 Coins: <strong>${spieler.coins}</strong><br>
+
+                📄 Offene Wettscheine:
+                ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}<br>
+
+                ✅ Ausgezahlte Wetten:
+                ${spieler.ausgezahlteWetten ? spieler.ausgezahlteWetten.length : 0}
+
+            </div>
+
+            <br>
+
+            `;
+
+        });
+
+    });
+
+}
 window.onload = function () {
 
     zeigeStart();
