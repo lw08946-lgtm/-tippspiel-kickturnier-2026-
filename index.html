@@ -133,7 +133,16 @@ Wette platzieren
 <h2>⚙️ Adminbereich</h2>
 
 <p>Hier kannst du später das komplette Turnier verwalten.</p>
-<h3>Teams</h3>
+<button type="button" onclick="teamsEinAusklappen()">
+
+    👥 Teams bearbeiten
+    <span id="teamsPfeil">▼</span>
+
+</button>
+
+<br><br>
+
+<div id="teamsInhalt" style="display:none;">
 
 <h3>Gruppe A</h3>
 
@@ -156,6 +165,8 @@ Wette platzieren
 <input id="team11" placeholder="Team C3"><br><br>
 <input id="team12" placeholder="Team C4"><br><br>
 
+ </div>   
+    
 <button onclick="teamsSpeichern()">
 💾 Teams speichern
 </button>
