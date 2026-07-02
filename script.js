@@ -1013,6 +1013,12 @@ function ladeQuoten() {
                 💾 Quoten speichern
             </button>
 
+            <br><br>
+
+            <button onclick="spielSperren(${spiel.id})">
+                ${spiel.gesperrt ? "🔴 Wettannahme geschlossen" : "🟢 Wettannahme geöffnet"}
+            </button>
+
         </div>
 
         <br>
@@ -1035,6 +1041,20 @@ speichernSpieler();
     alert("✅ Quoten gespeichert!");
 
 }
+async function spielSperren(spielId) {
+
+    const spiel = spiele.find(s => s.id === spielId);
+
+    spiel.gesperrt = !spiel.gesperrt;
+
+    await speichereQuotenOnline();
+
+    ladeQuoten();
+
+    spieleAnzeigen();
+
+}
+
 function speichernSpieler() {
 
 
