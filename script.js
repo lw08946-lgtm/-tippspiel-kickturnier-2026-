@@ -1710,20 +1710,19 @@ function zeigeAlleWetten() {
 
             liste.innerHTML += `
 
-            <div class="spiel">
+                <div class="spiel">
 
-                <h3>${doc.id}</h3>
+                    <h3>${doc.id}</h3>
 
-                <p><strong>Coins:</strong> ${spieler.coins}</p>
+                    <p><strong>Coins:</strong> ${spieler.coins}</p>
 
-                <p><strong>Offene Wettscheine:</strong>
-                ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}</p>
+                    <p><strong>Offene Wettscheine:</strong> ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}</p>
 
-                <button onclick="spielerEinAusklappen('${doc.id}')">
+                    <button type="button" onclick="spielerEinAusklappen('${doc.id}')">
 
-                    ${offen ? "▲ Verbergen" : "▼ Anzeigen"}
+                        ${offen ? "▲ Verbergen" : "▼ Anzeigen"}
 
-                </button>
+                    </button>
 
             `;
 
@@ -1741,17 +1740,17 @@ function zeigeAlleWetten() {
 
                         liste.innerHTML += `
 
-                        <div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
+                            <div style="margin-top:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,.05);">
 
-                            <strong>${wette.status}</strong><br>
+                                <strong>${wette.status}</strong><br>
 
-                            Einsatz: ${wette.einsatz} Coins<br>
+                                Einsatz: ${wette.einsatz} Coins<br>
 
-                            Quote: ${wette.quote.toFixed(2)}<br>
+                                Quote: ${wette.quote.toFixed(2)}<br>
 
-                            Möglicher Gewinn: ${wette.moeglicherGewinn.toFixed(2)} Coins
+                                Möglicher Gewinn: ${wette.moeglicherGewinn.toFixed(2)} Coins
 
-                            <hr style="margin:10px 0;">
+                                <hr style="margin:10px 0;">
 
                         `;
 
@@ -1768,7 +1767,7 @@ function zeigeAlleWetten() {
 
                         liste.innerHTML += `
 
-                        </div>
+                            </div>
 
                         `;
 
@@ -1780,19 +1779,23 @@ function zeigeAlleWetten() {
 
             liste.innerHTML += `
 
-            </div>
+                </div>
 
-            <br>
+                <br>
 
             `;
 
         });
+
+    });
+
 }
+
 function spielerEinAusklappen(name){
+
     geoeffneteSpieler[name] = !geoeffneteSpieler[name];
+
     zeigeAlleWetten();
+
 }
-
-
-
 
