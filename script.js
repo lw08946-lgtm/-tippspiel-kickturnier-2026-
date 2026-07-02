@@ -27,6 +27,7 @@ let ausgezahlteWetten = [];
 let spielerliste = [];
 let geoeffneteSpieler = {};
 let teamsGeoeffnet = false;
+let adminAngemeldet = false;
 
 let spiele = [
 
@@ -397,11 +398,17 @@ document.getElementById("neueSonderwetteSeite").style.display = "none";
 }
 function zeigeAdmin() {
 
-    const passwort = prompt("Admin-Passwort:");
+    if (!adminAngemeldet) {
 
-    if (passwort !== "1234") {
-        alert("Falsches Passwort!");
-        return;
+        const passwort = prompt("Admin-Passwort:");
+
+        if (passwort !== "1234") {
+            alert("Falsches Passwort!");
+            return;
+        }
+
+        adminAngemeldet = true;
+
     }
 
     document.getElementById("startSeite").style.display = "none";
