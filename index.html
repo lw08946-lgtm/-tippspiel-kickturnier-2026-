@@ -198,6 +198,12 @@ Wette platzieren
 
 <br><br>
 
+<button onclick="zeigeAlleWetten()">
+    Alle Wetten
+</button>
+
+<br><br>
+
 <button onclick="zeigeErgebnisse()">
     ⚽ Ergebnisse eintragen
 </button>
@@ -284,6 +290,20 @@ Spiel hinzufügen
 <button onclick="sonderwetteHinzufuegen()">
 💾 Sonderwette speichern
 </button>
+
+<section class="karte" id="alleWettenSeite" style="display:none;">
+
+    <h2>Alle Wetten</h2>
+
+    <div id="alleWettenListe"></div>
+
+    <br>
+
+    <button onclick="zeigeAdmin()">
+        Zurück
+    </button>
+
+</section>
 
 </section>
 <section class="karte" id="ergebnisseSeite" style="display:none;">
