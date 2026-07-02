@@ -1591,29 +1591,49 @@ function zeigeSpielerliste() {
 
             liste.innerHTML += `
 
-            <div class="spiel">
+<div class="spiel">
 
-                <h3>👤 ${doc.id}</h3>
+    <h3>👤 ${doc.id}</h3>
 
-                💰 Coins: <strong>${spieler.coins}</strong><br>
+    💰 Coins: <strong>${spieler.coins}</strong><br>
 
-                📄 Offene Wettscheine:
-                ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}<br>
+    📄 Offene Wettscheine:
+    ${spieler.offeneWetten ? spieler.offeneWetten.length : 0}<br>
 
-                ✅ Ausgezahlte Wetten:
-                ${spieler.ausgezahlteWetten ? spieler.ausgezahlteWetten.length : 0}
+    ✅ Ausgezahlte Wetten:
+    ${spieler.ausgezahlteWetten ? spieler.ausgezahlteWetten.length : 0}
 
-            </div>
+    <br><br>
 
-            <br>
+    <button onclick="spielerLoeschen('${doc.id}')">
+        🗑️ Spieler löschen
+    </button>
 
-            `;
+</div>
+
+<br>
+
+`;
 
         });
 
     });
 
 }
+async function spielerLoeschen(name) {
+
+    if (!confirm("Spieler '" + name + "' wirklich löschen?")) {
+        return;
+    }
+
+    await db.collection("spieler")
+        .doc(name)
+        .delete();
+
+    alert("✅ Spieler gelöscht.");
+
+}
+
 window.onload = function () {
 
     zeigeStart();
